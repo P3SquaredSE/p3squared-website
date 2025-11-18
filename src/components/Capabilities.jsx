@@ -1,24 +1,44 @@
 import React from "react";
 
 const cards = [
-  { title: "AI Systems Design", desc: "Integrating AI-driven workflows for data-driven companies." },
-  { title: "Human-Machine Research", desc: "Building collaborative frameworks inspired by MIT studies." },
-  { title: "Software Engineering", desc: "Full-stack development for performance and reliability." },
-  { title: "Accessibility & UX", desc: "Designing systems that are intuitive and inclusive." },
-  { title: "Data Infrastructure", desc: "Building scalable backends for smart systems." },
-  { title: "Automation & DevOps", desc: "Deploying efficient CI/CD pipelines." },
+  { title: "Strategize",
+    desc: "Define AI-driven frameworks for system optimization." },
+  { title: "Integrate",
+    desc: "Merge human workflows with intelligent automation." },
+  { title: "Collaborate",
+    desc: "Design interfaces for Human + AI decision synergy." },
+  { title: "Support",
+    desc: "Provide continuous improvement and insights." },
+  { title: "Optimize",
+    desc: "Fine-tune infrastructure for reliability and speed." },
+  { title: "Develop",
+    desc: "Build high-perfomance, accessible software systems." },
 ];
 
 export default function Capabilities() {
   return (
-    <section id="capabilities" className="py-24 bg-[#0F1D3A] text-white">
+    <section id="capabilities" className="bg-[#0F1D3A] text-white py-24">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-heading text-center mb-12">Our Capabilities</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* heading + text */}
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl md:text-4xl font-semibold">
+            Where Human Insights Meets AI Precision
+            </h2>
+          <p className="mt-4 text-white/80">
+          We design intelligent systems that combine human creativity with
+          machine efficiency to drive innovation, reliabilty, and real-world
+          impact.
+          </p>
+        </div>
+
+        {/* 2 x 3 cards grid */}
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
           {cards.map((c, i) => (
-            <div key={i} className="p-8 rounded-2xl bg-[#15294F] hover:bg-[#1A3370] transition">
-              <h3 className="text-2xl font-semibold mb-3">{c.title}</h3>
-              <p className="text-gray-400">{c.desc}</p>
+            <div
+              key={i}
+              className="rounded-2xl bg-[#15294F] PX-8 PY-10 shadow-lg shadow-black/30 border border-white/5 transition hover:-translate-y-1 hover:bg-[#1A3460]">
+              <h3 className="mb-3 text-xl font-semibold">{c.title}</h3>
+              <p className="text-sm text-gray-300">{c.desc}</p>
             </div>
           ))}
         </div>
