@@ -48,7 +48,7 @@ export default function HeroSection() {
 
             {/*Make it float(yoyo) and subtle hover tilt*/}
             <motion.img
-              src="/hero-image.png"// Replace with actual image path
+              src="/P3SquaredSE.png"// Replace with actual image path
               alt="Rural helathcare logistics"
               className="w-full rounded-2xl border-white/10 bg-[#10192d] object-cover shadow-2xl"
               animate={{ y: [0, -12, 0] }}

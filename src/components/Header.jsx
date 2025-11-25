@@ -10,7 +10,7 @@ export default function Header() {
             {/* Logo */}
             <a href="/" className="flex items-center gap-2">
                 <img
-                    src="/logo-white.png" // Replace with actual logo path
+                    src="/P3SquaredSElogo.png" // Replace with actual logo path
                     alt="P3SquaredSE Logo"
                     className="h-12 w-auto"
                 />
