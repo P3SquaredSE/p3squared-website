@@ -6,11 +6,13 @@ import HumanAICollab from "../components/HumanAICollab";
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen bg-[#0F1D3A] text-white">
       <Header />
-      <HeroSection />
-      <Capabilities />
-      <HumanAICollab />
-    </>
+      <main className="pt-24"> {/*offsets for fixed header*/}
+        <HeroSection />
+        <Capabilities />
+        <HumanAICollab />
+      </main>
+    </div>
   );
 }

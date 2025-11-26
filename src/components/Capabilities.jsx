@@ -17,27 +17,25 @@ const cards = [
 
 export default function Capabilities() {
   return (
-    <section id="capabilities" className="bg-[#0F1D3A] text-white py-24">
+    <section id="capabilities" className="py-24 bg-[#0F1D3A] text-white border-t border-white/5">
+      {/* heading + text */}
       <div className="container mx-auto px-6">
-        {/* heading + text */}
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            Where Human Insights Meets AI Precision
-            </h2>
-          <p className="mt-4 text-white/80">
+        <h2 className="text-3xl md:text-4xl font-heading text-center mb-4">
+          Where Human Insights Meets AI Precision
+        </h2>
+        <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
           We design intelligent systems that combine human creativity with
           machine efficiency to drive innovation, reliabilty, and real-world
           impact.
-          </p>
-        </div>
+        </p>
 
         {/* 2 x 3 cards grid */}
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {cards.map((c, i) => (
             <div
               key={i}
-              className="rounded-2xl bg-[#15294F] PX-8 PY-10 shadow-lg shadow-black/30 border border-white/5 transition hover:-translate-y-1 hover:bg-[#1A3460]">
-              <h3 className="mb-3 text-xl font-semibold">{c.title}</h3>
+              className="p-6 rounded-2xl bg-[#15294F] hover:bg-[#1A3370] transition shadow-md">
+              <h3 className="text-xl font-semibold mb-3">{c.title}</h3>
               <p className="text-sm text-gray-300">{c.desc}</p>
             </div>
           ))}
