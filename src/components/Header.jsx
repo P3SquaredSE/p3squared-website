@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Menu, X} from "lucide-react";
 import { href } from "react-router-dom";
 import { nav, s } from "framer-motion/client";
+import logo from "../assets/P3SquaredSElogo.png"; // Replace with actual logo path
 
 const navLinks = [
     { href: "#home", label: "Home" },
@@ -24,7 +25,7 @@ export default function Header() {
             {/* Logo */}
             <a href="/" className="flex items-center gap-2">
                 <img
-                    src="/assets/P3SquaredSElogo.png" // Replace with actual logo path
+                    src={logo}
                     alt="P3SquaredSE Logo"
                     className="h-12 w-auto"
                 />
