@@ -1,7 +1,12 @@
-import { scale } from "framer-motion";
+import { motion, useScroll, useTransform, scale } from "framer-motion";
 import React from "react";
 
 export default function HeroSection() {
+  
+  // Parallax effect for the image
+  const { scrollY } = useScroll();
+  const parallaxY = useTransform(scrollY, [0, 400], [0, -40]);
+
   return (
     <section id="home" className="bg-[#0F1D3A] text-white">
       <div className="container mx-auto px-6 py-20 md:py-28">
