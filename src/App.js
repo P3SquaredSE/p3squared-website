@@ -1,11 +1,11 @@
+import React from 'react';
+import Home from './pages/Home';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>P3Squared React Starter</h1>
-    </div>
-  );
+  return 
+    return <Home />;
+  
 }
 
 export default App;
