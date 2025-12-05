@@ -19,7 +19,7 @@ export default function Header() {
   const handleNavClick = () => setIsOpen(false);
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-[#0A1124] shadow-md">
+    <header className="fixed top-0 left-0 z-50 w-full bg-[#0B3356] shadow-md">
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
 
             {/* Logo */}
@@ -67,7 +67,7 @@ export default function Header() {
 
         {/* Mobile menu dropdown */}
         {isOpen && (
-            <div className="lg:hidden bg-[#0A1124] border-t border-white/10">
+            <div className="lg:hidden bg-[#0B3356] border-t border-white/10">
                 <nav className="flex flex-col px-6 py-4 gap-4 text-white/90 text-base">
                     {navLinks.map((link) => (
                         <a

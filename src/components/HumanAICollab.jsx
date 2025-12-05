@@ -2,7 +2,7 @@ import React from "react";
 
 export default function HumanAICollab() {
   return (
-    <section id="collaboration" className="py-24 bg-gradient-to-b from-[#0B1A33] to-[#112D56]">
+    <section id="collaboration" className="py-24 bg-gradient-to-b from-[#0B3356] to-[#061A2E]">
       <div className="container mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
         <div>
           <h2 className="text-4xl font-heading font-semibold mb-6">Human–Machine Collaboration</h2>

@@ -9,7 +9,7 @@ export default function HeroSection() {
   const parallaxY = useTransform(scrollY, [0, 400], [0, -40]);
 
   return (
-    <section id="home" className="relative overflow-hidden bg-[#0F1D3A] text-white">
+    <section id="home" className="relative overflow-hidden bg-[#0B3356] text-white">
 
       {/* Glow backgrounds */}
       <div className="pointer-events-none absolute -top-32 -left-32 h-72 w-72 rounded-full blur-3xl opacity-25"

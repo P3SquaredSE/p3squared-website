@@ -17,7 +17,7 @@ const cards = [
 
 export default function Capabilities() {
   return (
-    <section id="capabilities" className="py-24 bg-[#0F1D3A] text-white border-t border-white/5">
+    <section id="capabilities" className="py-24 bg-[#0B3356] text-white border-t border-white/5">
       {/* heading + text */}
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-heading text-center mb-4">
