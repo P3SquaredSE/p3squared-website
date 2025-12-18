@@ -8,10 +8,16 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#0B3356] text-white">
       <Header />
-      <main id="main" className="pt-24"> {/*offsets for fixed header*/}
+      <main id="main" className="pt-24" aria-label="Main content"> {/*offsets for fixed header*/}
         <HeroSection />
-        <Capabilities />
-        <HumanAICollab />
+
+        <section id="solutions">
+          <Capabilities />
+        </section>
+        
+        <section id="about">
+          <HumanAICollab />
+        </section>
       </main>
     </div>
   );
