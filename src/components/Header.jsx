@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Menu, X} from "lucide-react";
 import logo from "../assets/P3SquaredSElogo.png"; // Replace with actual logo path
 
@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuId = useId();
+  const menuId = "mobile-nav";
 
   const handleNavClick = () => setIsOpen(false);
 
@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-[#0B3356] shadow-md">
         {/* skip link (keyboard users) */}
-        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black">
             Skip to main content
         </a>
 
@@ -88,8 +88,8 @@ export default function Header() {
 
         {/* Mobile menu dropdown */}
         {isOpen && (
-            <div id={menuId} className="lg:hidden bg-[#0B3356] border-t border-white/10" role="dialog" aria-modal="true">
-                <nav className="flex flex-col px-6 py-4 gap-4 text-white/90 text-base">
+            <div id={menuId} className="lg:hidden bg-[#0B3356] border-t border-white/10">
+                <nav aria-label="Mobile" className="flex flex-col px-6 py-4 gap-4 text-white/90 text-base">
                     {navLinks.map((link) => (
                         <a
                             key={link.href}
