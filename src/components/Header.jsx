@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-[#0B3356] shadow-md">
         {/* skip link (keyboard users) */}
-        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black">
+        <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black">
             Skip to main content
         </a>
 
