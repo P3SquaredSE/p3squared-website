@@ -1,12 +1,14 @@
 import React from "react";
-import { motion, useScroll, useTransform, scale } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import heroTop from "../assets/P3SquaredSE.png";
 
 export default function HeroSection() {
+  const shouldReduceMotion = useReducedMotion();
   
   // Parallax effect for the image
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 400], [0, -40]);
+  const yValue = shouldReduceMotion ? 0 : parallaxY;
 
   return (
     <section id="home" className="relative overflow-hidden bg-[#0B3356] text-white">
@@ -58,13 +60,15 @@ export default function HeroSection() {
 
         {/* Hero Image */}
         <motion.div
-          style={{ y: parallaxY }}
+          style={{ y: yValue }}
           className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10"
         >
           <img
             src={heroTop}
             alt="Connected rural logistics"
             className="w-full h-full object-cover"
+            loading="eager"
+            decoding="async"
           />
         </motion.div>
       </div>
