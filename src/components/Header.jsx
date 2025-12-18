@@ -1,7 +1,5 @@
-import React, {useState} from "react";
+import React, { useEffect, useId, useState } from "react";
 import {Menu, X} from "lucide-react";
-import { href } from "react-router-dom";
-import { nav, s } from "framer-motion/client";
 import logo from "../assets/P3SquaredSElogo.png"; // Replace with actual logo path
 
 const navLinks = [
@@ -15,11 +13,27 @@ const navLinks = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuId = useId();
 
   const handleNavClick = () => setIsOpen(false);
 
+  // close on ESC (accessibility)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <header className="fixed top-0 left-0 z-50 w-full bg-[#0B3356] shadow-md">
+        {/* skip link (keyboard users) */}
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black">
+            Skip to main content
+        </a>
+
         <div className="container mx-auto flex items-center justify-between px-6 py-4">
 
             {/* Logo */}
@@ -27,7 +41,9 @@ export default function Header() {
                 <img
                     src={logo}
                     alt="P3SquaredSE Logo"
-                    className="h-12 w-auto"
+                    className="h-10 w-auto"
+                    loading="eager"
+                    decoding="async"
                 />
                 <span className="hidden md:block font-semibold text-white text-lg tracking-wide">
                     P3SquaredSE
@@ -35,7 +51,9 @@ export default function Header() {
             </a>
 
             {/* Navigation Links - Desktop */}
-            <nav className="hidden lg:flex items-center gap-10 text-white/90 text-sm font-medium">
+            <nav className="hidden lg:flex items-center gap-10 text-white/90 text-sm font-medium"
+                aria-label="Primary">
+                    
                 {navLinks.map((link) => (
                     <a
                         key={link.href}
@@ -57,9 +75,12 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
+                type="button"
                 className="lg:hidden text-white"
                 onClick={() => setIsOpen((prev) => !prev)}
                 aria-label={isOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isOpen}
+                aria-controls={menuId}
                 >
                     {isOpen ? <X size={26} /> : <Menu size={26} />}
                 </button>
@@ -67,7 +88,7 @@ export default function Header() {
 
         {/* Mobile menu dropdown */}
         {isOpen && (
-            <div className="lg:hidden bg-[#0B3356] border-t border-white/10">
+            <div id={menuId} className="lg:hidden bg-[#0B3356] border-t border-white/10" role="dialog" aria-modal="true">
                 <nav className="flex flex-col px-6 py-4 gap-4 text-white/90 text-base">
                     {navLinks.map((link) => (
                         <a
