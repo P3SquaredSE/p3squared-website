@@ -1,4 +1,5 @@
 import React from "react";
+import collabImg from "../assets/HumanMachineCollaboration.png";
 
 export default function HumanAICollab() {
   return (
@@ -20,16 +21,18 @@ export default function HumanAICollab() {
           </p>
         </div>
 
-        <div
-          tabIndex={0}
-          role="img"
-          aria-label="Visualization area for human and AI collaboration. Interactive graphic will appear here."
-          className="h-80 bg-[#15294F] rounded-2xl flex items-center justify-center
-            text-white/90 font-mono
-            focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#061A2E]
-            motion-reduce:transition-none">
-          <span aria-hidden="true">⚙️ Visualization Placeholder</span>
-        </div>
+        <figure className="h-80 bg-[#15294F] rounded-2xl overflow-hidden">
+          <img
+            src={collabImg}
+            alt="Illustration of human machine collaboration in healthcare, showing ethical AI and human oversight"
+            className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption className="sr-only">
+            Human and AI collaboration visualization for healthcare systems, illustrating ethical AI practices and human oversight in medical decision-making.
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
