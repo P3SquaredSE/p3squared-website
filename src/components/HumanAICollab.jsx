@@ -22,14 +22,17 @@ export default function HumanAICollab() {
         </div>
 
         <figure className="h-80 bg-[#15294F] rounded-2xl overflow-hidden">
-          <img
+          <div>
+            <img
             src={collabImg}
             alt="Illustration of human machine collaboration in healthcare, showing ethical AI and human oversight"
             className="w-full h-full object-cover"
             loading="lazy"
             decoding="async"
           />
-          <figcaption className="sr-only">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0b3356]/55 via-transparent to-transparent"/>
+          </div>
+          <figcaption className="px-6 py-4 text-sm text-white/80">
             Human and AI collaboration visualization for healthcare systems, illustrating ethical AI practices and human oversight in medical decision-making.
           </figcaption>
         </figure>
