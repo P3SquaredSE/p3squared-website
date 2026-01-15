@@ -2,6 +2,9 @@ import React from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import heroTop from "../assets/P3SquaredSE.png";
 
+const CONTACT_EMAIL =
+  "mailto:BestSupplySideSolutions@p3squaredse.com?subject=Inquiry%20from%20P3Squared%20Website";
+
 export default function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
   
@@ -43,8 +46,9 @@ export default function HeroSection() {
           {/* Buttons */}
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#contact"
+              href={CONTACT_EMAIL}
               className="inline-flex items-center justify-center rounded-lg bg-[#5568F2] px-7 py-3 text-sm md:text-base font-semibold shadow-md hover:bg-[#4658D8] transition"
+              aria-label="Email P3SquaredSE"
             >
               Contact Us
             </a>
@@ -66,7 +70,7 @@ export default function HeroSection() {
           <img
             src={heroTop}
             alt="Connected rural logistics"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain bg-[#0B3356]"
             loading="eager"
             decoding="async"
           />

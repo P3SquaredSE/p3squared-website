@@ -10,6 +10,8 @@ const navLinks = [
     { href: "#invest", label: "Invest" },
     { href: "#team", label: "Team" },
 ];
+const CONTACT_EMAIL =
+  "mailto:BestSupplySideSolutions@p3squaredse.com?subject=Inquiry%20from%20P3Squared%20Website";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,8 +69,9 @@ export default function Header() {
 
             {/* Button - Desktop */}
             <a
-                href="#contact"
+                href={CONTACT_EMAIL}
                 className="hidden lg:inline-flex items-center rounded-lg bg-[#5568F2] px-5 py-2 text-white font-semibold shadow-md hover:bg-[#4658D8] transition"
+                aria-label="Email P3SquaredSE"
             >
                 Contact Us
             </a>
@@ -101,7 +104,8 @@ export default function Header() {
                         </a>
                     ))}
                     <a
-                        href="#contact"
+                        href={CONTACT_EMAIL}
+                        aria-label="Email P3SquaredSE"
                         className="mt-4 inline-flex items-center justify-center rounded-lg bg-[#5568F2] px-5 py-2 text-white font-semibold shadow-md hover:bg-[#4658D8] transition"
                         onClick={handleNavClick}
                     >
