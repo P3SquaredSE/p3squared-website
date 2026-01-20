@@ -64,13 +64,13 @@ export default function HeroSection() {
 
         {/* Hero Image */}
         <motion.div
-          style={{ y: yValue }}
-          className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+          style={{ y: yValue, willChange: "transform" }}
+          className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 transform-gpu"
         >
           <img
             src={heroTop}
             alt="Connected rural logistics"
-            className="w-full h-full object-contain bg-[#0B3356]"
+            className="block w-full h-auto object-cover bg-[#0B3356] [backface-visibility:hidden]"
             loading="eager"
             decoding="async"
           />
