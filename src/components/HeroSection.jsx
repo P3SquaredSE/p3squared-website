@@ -30,7 +30,7 @@ export default function HeroSection() {
 
       {/*Text Content*/}
       <div className="container mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-        <div className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
+        <div className="mx-auto max-w-3xl text-center mb-12 md:mb-16 relative z-10">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
             Transforming Rural Healthcare
             <br className="hidden md:block" />
