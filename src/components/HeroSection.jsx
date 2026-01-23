@@ -6,6 +6,7 @@ const FORM_ENDPOINT = "https://formspree.io/f/meedlyp"; // Replace with your For
 
 export default function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
+  const lastFocusedRef = useRef(null);
   
   // Parallax effect for the image
   const { scrollY } = useScroll();
