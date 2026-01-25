@@ -64,11 +64,9 @@ export default function HeroSection({ onContactClick }) {
         </div>
 
         {/* Hero Image */}
-        <motion.div
-          style={{ y: yValue, willChange: "transform" }}
-          className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 transform-gpu"
-        >
-          <img
+        <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0B3356] isolate">
+          <motion.div style={{ y: yValue }}>
+            <img
             src={heroTop}
             alt="Connected rural logistics"
             className="block w-full h-auto object-cover bg-[#0B3356] [backface-visibility:hidden]"
@@ -76,6 +74,7 @@ export default function HeroSection({ onContactClick }) {
             decoding="async"
           />
         </motion.div>
+        </div>
       </div>
     </section>
   );
