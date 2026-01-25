@@ -27,7 +27,7 @@ export default function ContactModal({
     requestAnimationFrame(() => closeBtnRef.current?.focus());
 
     return () => {
-      // Restore focus to the element that opened the modal
+      document.body.style.overflow = originalOverflow; // ✅ restore scroll
       lastActiveElementRef.current?.focus?.();
       setStatus("idle");
       setErrorMsg("");
@@ -54,13 +54,11 @@ export default function ContactModal({
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
 
-        // Shift+Tab from first to last
         if (e.shiftKey && document.activeElement === first) {
           e.preventDefault();
           last.focus();
         }
 
-        // Tab from last to first
         if (!e.shiftKey && document.activeElement === last) {
           e.preventDefault();
           first.focus();
@@ -71,11 +69,6 @@ export default function ContactModal({
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, onClose]);
-
-  const handleBackdropClick = (e) => {
-    // click outside closes but clicking inside doesn't
-    if (e.target === e.currentTarget) onClose();
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -111,14 +104,14 @@ export default function ContactModal({
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[70] flex items-center justify-center px-4"
-      role="presentation"
-      onMouseDown={handleBackdropClick}
-      aria-hidden={false}
-    >
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/60" />
+    <div className="fixed inset-0 z-[70] flex items-center justify-center px-4" role="presentation">
+      {/* Backdrop (click closes) */}
+      <button
+        type="button"
+        className="absolute inset-0 bg-black/60"
+        onClick={onClose}
+        aria-label="Close contact form"
+      />
 
       {/* Dialog */}
       <div
@@ -128,6 +121,8 @@ export default function ContactModal({
         aria-labelledby={titleId}
         aria-describedby="contact-modal-desc"
         className="relative z-[71] w-full max-w-lg rounded-2xl bg-[#0B3356] text-white shadow-2xl border border-white/10"
+        onMouseDown={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4 px-6 pt-6">
           <h2 id={titleId} className="text-xl font-semibold">
@@ -146,12 +141,10 @@ export default function ContactModal({
         </div>
 
         <div className="px-6 pb-6">
-          {/* helper text for screen readers */}
           <p id="contact-modal-desc" className="mt-2 text-white/80">
             Fill out the form below and we’ll get back to you.
           </p>
 
-          {/* Success message (announced) */}
           {status === "success" && (
             <div
               className="mt-4 rounded-lg border border-white/15 bg-white/10 p-4"
@@ -162,21 +155,15 @@ export default function ContactModal({
             </div>
           )}
 
-          {/* Error message (announced) */}
           {status === "error" && (
-            <div
-              className="mt-4 rounded-lg border border-red-300/30 bg-red-500/10 p-4"
-              role="alert"
-            >
+            <div className="mt-4 rounded-lg border border-red-300/30 bg-red-500/10 p-4" role="alert">
               ❌ {errorMsg}
             </div>
           )}
 
-          {/* Formspree Form */}
           <form onSubmit={handleSubmit} className="mt-5 space-y-4">
-            {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-sm font-medium">
+              <label htmlFor="contact-name" className="block text-sm font-medium">
                 Full name <span className="text-white/70">(optional)</span>
               </label>
               <input
@@ -189,9 +176,8 @@ export default function ContactModal({
               />
             </div>
 
-            {/* Email (required) */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium">
+              <label htmlFor="contact-email" className="block text-sm font-medium">
                 Email <span className="text-white/70">(required)</span>
               </label>
               <input
@@ -205,9 +191,8 @@ export default function ContactModal({
               />
             </div>
 
-            {/* Message (required) */}
             <div>
-              <label htmlFor="message" className="block text-sm font-medium">
+              <label htmlFor="contact-message" className="block text-sm font-medium">
                 Message <span className="text-white/70">(required)</span>
               </label>
               <textarea
@@ -220,7 +205,6 @@ export default function ContactModal({
               />
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={status === "submitting"}
@@ -229,7 +213,6 @@ export default function ContactModal({
               {status === "submitting" ? "Sending..." : "Send Message"}
             </button>
 
-            {/* alternative contact */}
             <p className="text-sm text-white/70">
               Prefer email?{" "}
               <a
