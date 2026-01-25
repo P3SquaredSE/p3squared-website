@@ -17,7 +17,7 @@ export default function Home() {
   return (   
     <div className="min-h-screen bg-[#0B3356] text-white">
       <Header onContactClick={openContact}/>
-      <main id="main" className="pt-24" aria-label="Main content"> {/*offsets for fixed header*/}
+      <main id="main" className="pt-24" aria-label="Main content">
         <HeroSection onContactClick={openContact}/>
 
         <section id="solutions">

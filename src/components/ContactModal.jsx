@@ -27,7 +27,7 @@ export default function ContactModal({
     requestAnimationFrame(() => closeBtnRef.current?.focus());
 
     return () => {
-      document.body.style.overflow = originalOverflow; // ✅ restore scroll
+      document.body.style.overflow = originalOverflow;
       lastActiveElementRef.current?.focus?.();
       setStatus("idle");
       setErrorMsg("");
