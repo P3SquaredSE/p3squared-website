@@ -19,6 +19,10 @@ export default function ContactModal({
 
     lastActiveElementRef.current = document.activeElement;
 
+    // lock background scroll while modal open
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     // Focus close button first for accessibility
     requestAnimationFrame(() => closeBtnRef.current?.focus());
 
@@ -122,6 +126,7 @@ export default function ContactModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        aria-describedby="contact-modal-desc"
         className="relative z-[71] w-full max-w-lg rounded-2xl bg-[#0B3356] text-white shadow-2xl border border-white/10"
       >
         <div className="flex items-start justify-between gap-4 px-6 pt-6">
@@ -142,7 +147,7 @@ export default function ContactModal({
 
         <div className="px-6 pb-6">
           {/* helper text for screen readers */}
-          <p className="mt-2 text-white/80">
+          <p id="contact-modal-desc" className="mt-2 text-white/80">
             Fill out the form below and we’ll get back to you.
           </p>
 
@@ -175,7 +180,7 @@ export default function ContactModal({
                 Full name <span className="text-white/70">(optional)</span>
               </label>
               <input
-                id="name"
+                id="contact-name"
                 name="name"
                 type="text"
                 autoComplete="name"
@@ -190,7 +195,7 @@ export default function ContactModal({
                 Email <span className="text-white/70">(required)</span>
               </label>
               <input
-                id="email"
+                id="contact-email"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -206,7 +211,7 @@ export default function ContactModal({
                 Message <span className="text-white/70">(required)</span>
               </label>
               <textarea
-                id="message"
+                id="contact-message"
                 name="message"
                 required
                 rows={5}
