@@ -65,15 +65,15 @@ export default function HeroSection({ onContactClick }) {
 
         {/* Hero Image */}
         <div className="max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-[#0B3356] isolate">
-          <motion.div style={{ y: yValue }}>
-            <img
+          <motion.img
             src={heroTop}
-            alt="Connected rural logistics"
-            className="block w-full h-auto object-cover bg-[#0B3356] [backface-visibility:hidden]"
+            alt="Illustration representing human-AI collaboration in healthcare logistics"
+            style={{ y: yValue }}
+            className="w-full h-auto object-cover"
             loading="eager"
             decoding="async"
+            draggable="false"
           />
-        </motion.div>
         </div>
       </div>
     </section>
