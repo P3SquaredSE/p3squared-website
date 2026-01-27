@@ -11,7 +11,7 @@ export default function Home() {
     const openContact = () => setIsContactOpen(true);
     const closeContact = () => setIsContactOpen(false);
 
-    const CONTACT_FORM_ACTION = "https://formspree.io/f/meedlyp"; // Replace with your Formspree endpoint
+    const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; // Replace with your Formspree endpoint
 
 
   return (   
