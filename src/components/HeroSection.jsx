@@ -6,9 +6,9 @@ export default function HeroSection({ onContactClick }) {
   const shouldReduceMotion = useReducedMotion();
 
   // Parallax effect for the image
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 400], [0, -40]);
-  const yValue = shouldReduceMotion ? 0 : parallaxY;
+  //const { scrollY } = useScroll();
+  //const parallaxY = useTransform(scrollY, [0, 400], [0, 40]);
+ // const yValue = shouldReduceMotion ? 0 : parallaxY;
 
   return (
     <section id="home" className="relative overflow-hidden bg-[#0B3356] text-white">
@@ -28,39 +28,12 @@ export default function HeroSection({ onContactClick }) {
 
       {/* Text Content */}
       <div className="container mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-24">
-        <div className="mx-auto max-w-3xl text-center mb-12 md:mb-16 relative z-10">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <div className="max-w-2xl text-left">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
             Transforming Rural Healthcare
-            <br className="hidden md:block" />
+            <br className="hidden sm:block" />
             with AI + Human Oversight
           </h1>
-
-          <p className="text-sm md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Digital eve AI is reshaping medical logistics for underserved communities. We combine machine learning with
-            human intelligence to reduce costs, prevent stockouts, and improve outcomes.
-          </p>
-
-          {/* Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => onContactClick?.()}
-              className="inline-flex items-center justify-center rounded-lg bg-[#5568F2] px-7 py-3 text-sm md:text-base font-semibold shadow-md hover:bg-[#4658D8] transition
-                         focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-              aria-label="Open contact form"
-              aria-haspopup="dialog"
-            >
-              Contact Us
-            </button>
-
-            <a
-              href="#invest"
-              className="inline-flex items-center justify-center rounded-lg bg-[#27D5E6] px-7 py-3 text-sm md:text-base font-semibold text-[#041023] shadow-md hover:bg-[#1EC4D4] transition
-                         focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-            >
-              Invest in the Mission
-            </a>
-          </div>
         </div>
 
         {/* Hero Image */}
@@ -68,7 +41,7 @@ export default function HeroSection({ onContactClick }) {
           <img
             src={heroTop}
             alt="Illustration representing human-AI collaboration in healthcare logistics"
-            className="w-full h-auto object-cover"
+            className="block w-full h-auto object-cover"
             loading="eager"
             decoding="async"
           />
