@@ -19,8 +19,8 @@ export default function HiddenLaborTaxCalculator({
     onCOntactClick,
 }) {
     //inputs by user
-    const [staffCount, setStaffCount] = useState(50);
-    const [hourlyWage, setHourlyWage] = useState(45);
+    const [staffCount, setStaffCount] = useState(0);
+    const [hourlyWage, setHourlyWage] = useState(0);
 
     //WCAG 
     const staffValid = Number.isFinite(staffCount) && staffCount > 0;
@@ -49,7 +49,7 @@ export default function HiddenLaborTaxCalculator({
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
                     <div className="max-w-2xl">
                         <h2 id="hlt-title" className="text-2xl md:text-3xl font-bold">
-                            Labor Tax Calculator
+                            Labor Calculator
                         </h2>
                         <p className="mt-2 text-white/80">
                             Estimate the annual labor cost wasted when clinical staff spend time on logistics.
