@@ -6,8 +6,6 @@ const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#solutions", label: "Solutions" },
-  { href: "#contact", label: "Contact" },
-  { href: "#invest", label: "Invest" },
   { href: "#team", label: "Team" },
 ];
 
@@ -68,16 +66,28 @@ export default function Header({ onContactClick }) {
         </nav>
 
         {/* Contact Button - Desktop */}
-        <button
-          type="button"
-          onClick={() => onContactClick?.()}
-          className="hidden lg:inline-flex items-center rounded-lg bg-[#5568F2] px-5 py-2 text-white font-semibold shadow-md hover:bg-[#4658D8] transition
-                     focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]" // ✅ FIX 2
-          aria-label="Open contact form"
-          aria-haspopup="dialog"
-        >
-          Contact Us
-        </button>
+        <div className="hidden lg:flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => onContactClick?.()}
+            className="inline-flex items-center rounded-lg bg-[#5568F2] px-5 py-2 text-white font-semibold shadow-md hover:bg-[#4658D8] transition
+                      focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
+            aria-label="Open contact form"
+            aria-haspopup="dialog"
+          >
+            Contact Us
+          </button>
+
+          <a
+            href="#invest"
+            className="inline-flex items-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition 
+                      focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
+             aria-label="Learn about investment opportunities"
+            >
+              Invest
+          </a>
+        </div>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -127,6 +137,16 @@ export default function Header({ onContactClick }) {
             >
               Contact Us
             </button>
+
+            <a
+              href="#invest"
+              onClick={handleNavClick}
+              className="inline-flex items-center justify-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition
+                        focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
+              aria-label="Learn about investment opportunities"
+            >
+              Invest
+            </a>
           </nav>
         </div>
       )}

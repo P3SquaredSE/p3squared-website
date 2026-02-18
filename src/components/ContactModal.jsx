@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 export default function ContactModal({
   isOpen,
   onClose,
-  formAction, // your Formspree endpoint
+  formAction, // Formspree endpoint
   titleId = "contact-modal-title",
 }) {
   const dialogRef = useRef(null);
@@ -70,6 +70,12 @@ export default function ContactModal({
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [isOpen, onClose]);
 
+  const handleBackdropClick = (e) => { //close when clicked on the overlay itself, but not when clicking inside the dialog 
+    if (e.target === e.currentTarget)
+      onClose();
+  };
+    
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("submitting");
@@ -121,8 +127,8 @@ export default function ContactModal({
         aria-labelledby={titleId}
         aria-describedby="contact-modal-desc"
         className="relative z-[71] w-full max-w-lg rounded-2xl bg-[#0B3356] text-white shadow-2xl border border-white/10"
-        onMouseDown={(e) => e.stopPropagation()}
-        onClick={(e) => e.stopPropagation()}
+        onPointerDown={(e) => e.stopPropagation()} //clicking insice doesn't close
+        //onClick={handleBackdropClick} //clicking outside the dialog closes
       >
         <div className="flex items-start justify-between gap-4 px-6 pt-6">
           <h2 id={titleId} className="text-xl font-semibold">
