@@ -5,7 +5,7 @@ import heroTop from "../assets/P3SquaredSE.png";
 export default function HeroSection({ onContactClick }) {
   const shouldReduceMotion = useReducedMotion();
 
-  // Parallax effect (very light to avoid GPU glitches)
+  // Parallax effect (only if user hasn't requested reduced motion)
   const { scrollY } = useScroll();
   const parallaxY = useTransform(scrollY, [0, 500], [0, 18]);
   const yValue = shouldReduceMotion ? 0 : parallaxY;
@@ -13,31 +13,27 @@ export default function HeroSection({ onContactClick }) {
   return (
     <section id="home" className="relative overflow-hidden text-white">
       {/* Background image */}
-      <motion.div
-        style={{ y: yValue }}
-        className="absolute inset-0"
-        aria-hidden="true"
-      >
+      <motion.div style={{ y: yValue }} className="absolute inset-0" aria-hidden="true">
         <img
           src={heroTop}
           alt=""
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center scale-[1.18] md:scale-[1.28]"
           loading="eager"
           decoding="async"
         />
       </motion.div>
 
-      {/* Dark overlay tint (keeps your original blue vibe) */}
+      {/* Overlay tint (keeps your original blue vibe) */}
       <div
         className="absolute inset-0"
         aria-hidden="true"
         style={{
           background:
-            "linear-gradient(180deg, rgba(11,51,86,0.78) 0%, rgba(11,51,86,0.70) 55%, rgba(11,51,86,0.88) 100%)",
+            "linear-gradient(90deg, rgba(11,51,86,0.35) 0%, rgba(11,51,86,0.18) 45%, rgba(11,51,86,0.28) 100%)",
         }}
       />
 
-      {/* Optional subtle glows (keep your existing style) */}
+      {/* Optional subtle glows */}
       <div
         className="pointer-events-none absolute -top-28 -left-28 h-72 w-72 rounded-full blur-3xl opacity-20"
         style={{
@@ -53,12 +49,12 @@ export default function HeroSection({ onContactClick }) {
         aria-hidden="true"
       />
 
-      {/* Content container (centers the card like your example) */}
+      {/* Content container */}
       <div className="relative z-10 container mx-auto px-6 py-20 md:py-28">
-        <div className="flex min-h-[520px] items-center justify-center">
-          {/* Overlay card */}
-          <div className="w-full max-w-3xl rounded-2xl border border-white/15 bg-[#0B3356]/80 backdrop-blur-md shadow-2xl px-6 py-10 md:px-12 md:py-14 text-center">
-            <p className="text-xs tracking-[0.25em] text-white/80 font-semibold">
+        <div className="flex min-h-[520px] items-center justify-start">
+          {/* Left Overlay card */}
+          <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-[#0B3356]/45 backdrop-blur-sm shadow-2xl px-6 py-10 md:px-10 md:py-12 text-left">
+            <p className="text-xs tracking-[0.25em] text-white/75 font-semibold">
               WELCOME TO
             </p>
 
@@ -68,7 +64,7 @@ export default function HeroSection({ onContactClick }) {
               with AI + Human Oversight
             </h1>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+           {/* <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 type="button"
                 onClick={() => onContactClick?.()}
@@ -85,7 +81,7 @@ export default function HeroSection({ onContactClick }) {
               >
                 Invest
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
