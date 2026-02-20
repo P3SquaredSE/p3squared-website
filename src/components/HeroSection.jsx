@@ -1,87 +1,38 @@
 import React from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import heroTop from "../assets/P3SquaredSE.png";
 
-export default function HeroSection({ onContactClick }) {
-  const shouldReduceMotion = useReducedMotion();
-
-  // Parallax effect (only if user hasn't requested reduced motion)
-  const { scrollY } = useScroll();
-  const parallaxY = useTransform(scrollY, [0, 500], [0, 18]);
-  const yValue = shouldReduceMotion ? 0 : parallaxY;
-
+export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden text-white">
-      {/* Background image */}
-      <motion.div style={{ y: yValue }} className="absolute inset-0" aria-hidden="true">
-        <img
-          src={heroTop}
-          alt=""
-          className="h-full w-full object-cover object-center scale-[1.18] md:scale-[1.28]"
-          loading="eager"
-          decoding="async"
-        />
-      </motion.div>
+    <section id="home" className="relative bg-[#0B3356] text-white">
+      {/* HERO IMAGE */}
+      <div className="container mx-auto px-6 pt-10 pb-12">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+          <div className="relative h-[360px] sm:h-[440px] md:h-[520px] lg:h-[560px] bg-[#0B3356]">
+            <img
+              src={heroTop}
+              alt="Illustration representing human-AI collaboration in healthcare logistics"
+              className="absolute inset-0 h-full w-full object-contain"
+              loading="eager"
+              decoding="async"
+            />
 
-      {/* Overlay tint (keeps your original blue vibe) */}
-      <div
-        className="absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(11,51,86,0.35) 0%, rgba(11,51,86,0.18) 45%, rgba(11,51,86,0.28) 100%)",
-        }}
-      />
+            {/* Dark gradient for readability */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0B3356]/35 via-[#0B3356]/15 to-transparent" />
+            {/* LEFT OVERLAY CARD */}
+            <div className="absolute inset-y-0 left-0 flex items-center">
+              <div className="m-4 sm:m-6 md:m-8 max-w-[520px] rounded-2xl border border-white/10 bg-[#0B3356]/35 backdrop-blur-sm p-6 sm:p-8">
+                <p className="text-xs tracking-[0.25em] text-white/70">
+                  WELCOME TO
+                </p>
 
-      {/* Optional subtle glows */}
-      <div
-        className="pointer-events-none absolute -top-28 -left-28 h-72 w-72 rounded-full blur-3xl opacity-20"
-        style={{
-          background: "radial-gradient(circle at 30% 30%, rgba(85,104,242,0.7), transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -bottom-36 -right-28 h-80 w-80 rounded-full blur-3xl opacity-20"
-        style={{
-          background: "radial-gradient(circle at 70% 70%, rgba(41,196,255,0.45), transparent 70%)",
-        }}
-        aria-hidden="true"
-      />
+                <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+                  Transforming Rural Healthcare
+                  <br className="hidden sm:block" />
+                  with AI + Human Oversight
+                </h1>
 
-      {/* Content container */}
-      <div className="relative z-10 container mx-auto px-6 py-20 md:py-28">
-        <div className="flex min-h-[520px] items-center justify-start">
-          {/* Left Overlay card */}
-          <div className="w-full max-w-3xl rounded-2xl border border-white/10 bg-[#0B3356]/45 backdrop-blur-sm shadow-2xl px-6 py-10 md:px-10 md:py-12 text-left">
-            <p className="text-xs tracking-[0.25em] text-white/75 font-semibold">
-              WELCOME TO
-            </p>
-
-            <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              Transforming Rural Healthcare
-              <br className="hidden sm:block" />
-              with AI + Human Oversight
-            </h1>
-
-           {/* <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                type="button"
-                onClick={() => onContactClick?.()}
-                className="inline-flex items-center justify-center rounded-lg bg-[#5568F2] px-8 py-3 text-sm md:text-base font-semibold shadow-md hover:bg-[#4658D8] transition
-                           focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-              >
-                Contact Us
-              </button>
-
-              <a
-                href="#invest"
-                className="inline-flex items-center justify-center rounded-lg bg-[#27D5E6] px-8 py-3 text-sm md:text-base font-semibold text-[#041023] shadow-md hover:bg-[#1EC4D4] transition
-                           focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-              >
-                Invest
-              </a>
-            </div> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
