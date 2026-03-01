@@ -16,7 +16,7 @@ export default function Philosophy() {
         <div className="min-h-screen bg-[#0B3356] text-white">
             <Header onContactClick={openContact}/>
 
-            <main id="main" className="pt-24" aria-labale="Main content">
+            <main id="main" className="pt-24" aria-label="Main content">
                 <OurPhilosophy onContactClick={openContact}/>
             </main>
 

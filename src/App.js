@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Philosophy from './pages/Philosphy';
+import Philosophy from './pages/Philosophy';
 import './App.css';
 
 function App() {
