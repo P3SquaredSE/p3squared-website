@@ -1,4 +1,4 @@
-import React, { useMemo, useState} from "react";
+import React, { useMemo, useState, useCallback} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import mriIcon from "../assets/icons/mriIcon.png";
 import pharmacyshopIcon from "../assets/icons/pharmacyshopIcon.png";
@@ -26,20 +26,51 @@ function BulletList({ items }) {
     );
 }
 
+function NumberList({ items }) {
+  return (
+    <ol className="mt-3 list-decimal pl-6 space-y-2 text-white/85">
+      {items.map((t, i) => (
+        <li key={i} className="leading-relaxed">{t}</li>
+      ))}
+    </ol>
+  );
+}
+
 function CardBody({ blocks }) {
-    return (
-        <div className="mt-4 space-y-3">
-            {blocks.map((b, idx) => {
-                if (b.type === "bullets")
-                    return <BulletList key={idx} items={b.items} />;
-                return (
-                    <p key={idx} className="text-white/85 leading-relaxed">
-                        {b.text}
-                    </p>
-                );
-            })}
-        </div>
-    );
+  return (
+    <div className="mt-4 space-y-3">
+      {blocks.map((b, idx) => {
+        if (b.type === "bullets") return <BulletList key={idx} items={b.items} />;
+        if (b.type === "numbers") return <NumberList key={idx} items={b.items} />;
+
+        if (b.type === "h") {
+          return (
+            <h4 key={idx} className="mt-4 text-white font-semibold text-lg">
+              {b.text}
+            </h4>
+          );
+        }
+
+        if (b.type === "b") {
+          return (
+            <p key={idx} className="text-white font-semibold">
+              {b.text}
+            </p>
+          );
+        }
+
+        // type "p" (contains <i> tags sometimes)
+        return (
+          <HtmlText
+            key={idx}
+            as="p"
+            className="text-white/85 leading-relaxed"
+            html={b.text}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export default function OurPhilosophy({ onContactClick }) {
@@ -169,7 +200,7 @@ return (
             <div className="absolute -bottom-48 right-[-120px] h-[520px] w-[520px] rounded-full bg-white/10 blur-3xl" />
         </div>
 
-        <div className="relativ mx-auto max-w-6xl px-4 py-14 md:py-20">
+        <div className="relative mx-auto max-w-6xl px-4 py-14 md:py-20">
             {/* Header */}
             <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
