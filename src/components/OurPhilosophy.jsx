@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useCallback} from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import mriIcon from "../assets/icons/mriIcon.png";
 import pharmacyshopIcon from "../assets/icons/pharmacyshopIcon.png";
 import brainIcon from "../assets/icons/brainIcon.png";
@@ -192,6 +192,8 @@ const prev = useCallback(
 
 const active = items[index];
 
+const prefersReducedMotion = useReducedMotion();
+
 const iconPosClass =
   active.key === "capital-assets"
     ? "top-6 left-6" // MRI upper-left
@@ -201,6 +203,10 @@ const iconPosClass =
 
 return (
     <section className="relative w-full overflow-hidden pb-28">
+        <p className="sr-only" aria-live="polite">
+            Showing: {active.title}
+        </p>
+
         {/* Background glow */}
         <div className="pointer-events-none absolute inset-0 opacity-70">
             <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
@@ -209,12 +215,14 @@ return (
 
         <div className="relative mx-auto max-w-6xl px-4 py-14 md:py-20">
             {/* Header */}
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="text-center">
                 <div>
-                    <p className="text-white/70 text-sm tracking-wide uppercase">
+                    <p className="text-white/80 text-sm tracking-wide uppercase">
                         Our Philosophy 
                     </p>
-                    <h2 className="mt-2 text-3xl md:text-4xl font-semibold text-white">
+                    <h2 
+                        id="philosophy-title"
+                        className="mt-2 text-3xl md:text-4xl font-semibold text-white">
                         Build Resilience for Rural Healthcare
                     </h2>
                     <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
@@ -225,12 +233,16 @@ return (
             </div>
 
             {/* tabs */}
-            <div className="mt-8 flex flex-wrap gap-2">
+            <div className="mt-8 flex flex-wrap justify-center gap-2"
+                role="radiogroup">
                 {items.map((it, i) => (
                     <button
                         key={it.key}
                         type="button"
                         onClick={() => goTo(i)}
+                        role="radio"
+                        aria-checked={i === index}
+                        aria-label={`Show ${it.title}`}
                         className={["flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition",
                             i === index
                                 ? "border-white/30 bg-white/15 text-white"
@@ -248,10 +260,13 @@ return (
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active.key}
-                        initial={{ opacity: 0, y: 12 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -12 }}
-                        transition={{ duration: 0.25 }}
+                        initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                        animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                        exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: -12 }}
+                        transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.25 }}
+                        role="region"
+                        aria-labelledby="active-card-title"
+                        tabIndex={-1}
                         className="relative rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 shadow-xl"
                     >
                         {/* Floating icon */}
@@ -265,6 +280,7 @@ return (
                             <img
                                 src={active.icon}
                                 alt=""
+                                aria-hidden="true"
                                 className="h-10 w-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]"
                             />
                         </div>
@@ -276,7 +292,9 @@ return (
                                 active.key === "consumables" ? "pr-24" : "pl-24",
                             ].join(" ")}
                         >
-                            <h3 className="text-xl md:text-2xl font-semibold text-white">
+                            <h3 
+                                id="active-card-title"
+                                className="text-xl md:text-2xl font-semibold text-white">
                                 {active.title}
                             </h3>
                             <CardBody blocks={active.blocks} />
@@ -289,7 +307,10 @@ return (
                         type="button"
                         onClick={prev}
                         disabled={index === 0}
-                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
+                        aria-disabled={index === 0}
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 
+                                    disabled:opacity-40 disabled:cursor-not-allowed
+                                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B3356]"
                     >
                         Previous
                     </button>
@@ -298,7 +319,10 @@ return (
                         type="button"
                         onClick={next}
                         disabled={index === items.length - 1}
-                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
+                        aria-disabled={index === items.length - 1}
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 
+                                    disabled:opacity-40 disabled:cursor-not-allowed
+                                    focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B3356]"
                     > 
                         Next
                     </button>
@@ -307,7 +331,10 @@ return (
                         <button
                             type="button"
                             onClick={onContactClick}
-                            className="rounded-xl bg-white px-4 py-2 font-semibold text-black hover:opacity-90"
+                            aria-haspopup="dialog"
+                            className="rounded-xl bg-white px-4 py-2 font-semibold text-black hover:opacity-90
+                                        focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80 
+                                        focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B3356]"
                         > 
                             Contact
                         </button>
