@@ -222,7 +222,7 @@ return (
                     </p>
                     <h2 
                         id="philosophy-title"
-                        className="mt-2 text-3xl md:text-4xl font-semibold text-white">
+                        className="mt-2 mx-auto max-w-3xl text-3xl md:text-4xl font-semibold text-white text-center">
                         Build Resilience for Rural Healthcare
                     </h2>
                     <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
