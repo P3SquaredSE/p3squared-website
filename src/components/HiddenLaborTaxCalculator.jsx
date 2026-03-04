@@ -51,12 +51,7 @@ export default function HiddenLaborTaxCalculator({
                         <h2 id="hlt-title" className="text-2xl md:text-3xl font-bold">
                             Labor Calculator
                         </h2>
-                        <p className="mt-2 text-white/80">
-                            Estimate the annual labor cost wasted when clinical staff spend time on logistics.
-                            Assumes <span className="font-semibold text-white">{Math.round(drag * 100)}%</span>{" "} logistics 
-                            drag and <span className="font-semibold text-white">{hoursPerYear.toLocaleString()}</span>{" "} 
-                            working hours per year.
-                        </p>
+                        
                     </div>
 
                     <div

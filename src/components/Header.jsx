@@ -40,13 +40,10 @@ export default function Header({ onContactClick }) {
           <img
             src={logo}
             alt="P3SquaredSE Logo"
-            className="h-10 w-auto"
+            className="h-14 w-auto"
             loading="eager"
             decoding="async"
           />
-          <span className="hidden md:block font-semibold text-white text-lg tracking-wide">
-            P3SquaredSE
-          </span>
         </a>
 
         {/* Navigation Links - Desktop */}
