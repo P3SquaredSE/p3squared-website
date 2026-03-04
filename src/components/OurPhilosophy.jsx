@@ -14,20 +14,6 @@ function HtmlText({ as = "p", className = "", html = "" }) {
     return <Tag className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-function IconBadge({ src, alt = "" }) {
-    return (
-        <span className="inline-flex items-center justify-center rounded-xl bg-white/15 ring-1 ring-white/25 p-2">
-            <img
-                src={src}
-                alt={alt}
-                className="h-5 2-5 md:h-6 md:w-6 opacity-100 frop-shadow"
-                loading="lazy"
-                decoding="async"
-            />
-        </span>
-    );
-}
-
 function BulletList({ items }) {
     return (
         <ul className="mt-3 list-disc pl-5 space-y-2 text-white/85">
@@ -206,6 +192,13 @@ const prev = useCallback(
 
 const active = items[index];
 
+const iconPosClass =
+  active.key === "capital-assets"
+    ? "top-6 left-6" // MRI upper-left
+    : active.key === "consumables"
+    ? "top-1/2 right-6 -translate-y-1/2" // Pill middle-right
+    : "top-6 left-6"; // Brain left again (upper-left style)
+
 return (
     <section className="relative w-full overflow-hidden pb-28">
         {/* Background glow */}
@@ -222,11 +215,11 @@ return (
                         Our Philosophy 
                     </p>
                     <h2 className="mt-2 text-3xl md:text-4xl font-semibold text-white">
-                        Build resilience for rural healthcare
+                        Build Resilience for Rural Healthcare
                     </h2>
                     <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
-                        Three pillars—capital assets, consumables, and a unified command
-                        center—so rural facilities can plan ahead instead of reacting late.                        
+                        Three pillars: Capital Assets, Consumables, and a Unified Command
+                        Center so rural facilities can plan ahead instead of reacting late.                        
                     </p>
                 </div>
             </div>
@@ -244,7 +237,7 @@ return (
                                 : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10",
                         ].join(" ")}
                         >
-                            <IconBadge src={it.icon} alt="" />
+                            <img src={it.icon} alt="" className="h-5 w-5" />
                             <span>{it.title}</span>
                     </button>
                 ))}
@@ -259,70 +252,68 @@ return (
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -12 }}
                         transition={{ duration: 0.25 }}
-                        className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 shadow-xl"
+                        className="relative rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 shadow-xl"
+                    >
+                        {/* Floating icon */}
+                        <div
+                            className={[
+                                "absolute",
+                                iconPosClass,
+                                "rounded-2xl border border-white/20 bg-white/10 p-3",
+                            ].join(" ")}
                         >
-                            <div className="flex items-start gap-4">
-                                <div className="rounded-2xl border border-white/10 bg-white/10 p-2">
-                                    <IconBadge src={active.icon} alt="" />
-                                </div>
-                                <div className="min-w-0">
-                                    <h3 className="text-xl md:text-2xl font-semibold text-white">
-                                        {active.title}
-                                    </h3>
-                                    <CardBody blocks={active.blocks} />
-                                </div>
-                            </div>
+                            <img
+                                src={active.icon}
+                                alt=""
+                                className="h-10 w-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]"
+                            />
+                        </div>
+
+                        {/* Content padding so text doesn't collide with icon */}
+                        <div
+                            className={[
+                                "min-w-0",
+                                active.key === "consumables" ? "pr-24" : "pl-24",
+                            ].join(" ")}
+                        >
+                            <h3 className="text-xl md:text-2xl font-semibold text-white">
+                                {active.title}
+                            </h3>
+                            <CardBody blocks={active.blocks} />
+                        </div>
                     </motion.div>
                 </AnimatePresence>
 
-                <div className="sticky bottom-4 mt-6 z-40">
-                    <div className="mx-auto max-w-6xl">
-                        <div className="flex items-center justify-end gap-2 rounded-2xl border border-white/15 bg-[#0B3356]/70 px-4 py-3 backdrop-blur-md shadow-xl">
-                            <button
-                                type="button"
-                                onClick={prev}
-                                disabled={index === 0}
-                                className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
-                            >
-                                Previous
-                            </button>
+                <div className="sticky bottom-4 mt-6 flex justify-end gap-2">
+                    <button
+                        type="button"
+                        onClick={prev}
+                        disabled={index === 0}
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
+                    >
+                        Previous
+                    </button>
 
-                            <button
-                                type="button"
-                                onClick={next}
-                                disabled={index === items.length - 1}
-                                className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
-                            >
-                                Next
-                            </button>
+                    <button 
+                        type="button"
+                        onClick={next}
+                        disabled={index === items.length - 1}
+                        className="rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-white/90 hover:bg-white/10 disabled:opacity-40"
+                    > 
+                        Next
+                    </button>
 
-                            {onContactClick && (
-                                <button
-                                    type="button"
-                                    onClick={onContactClick}
-                                    className="rounded-xl bg-white px-4 py-2 font-semibold text-black hover:opacity-90"
-                                >
-                                    Contact
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                </div>                
-
-                {/* dots 
-                <div className="mt-4 flex items-center justify-center gap-2">
-                    {items.map((_, i) => (
+                    {onContactClick && ( 
                         <button
-                            key={i}
                             type="button"
-                            onClick={() => goTo(i)}
-                            className={["h-2 w-2.5 rounded-full transition",
-                                i === index ? "bg-white" : "bg-white/30 hover:bg-white/50",
-                            ].join(" ")}
-                            aria-label={`Go to slide ${i + 1}`}
-                        />
-                    ))}
-                </div> */}
+                            onClick={onContactClick}
+                            className="rounded-xl bg-white px-4 py-2 font-semibold text-black hover:opacity-90"
+                        > 
+                            Contact
+                        </button>
+                    )}
+                </div>               
+
 
             </div>
 
