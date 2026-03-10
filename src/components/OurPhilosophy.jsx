@@ -30,7 +30,9 @@ function NumberList({ items }) {
   return (
     <ol className="mt-3 list-decimal pl-6 space-y-2 text-white/85">
       {items.map((t, i) => (
-        <li key={i} className="leading-relaxed">{t}</li>
+        <li key={i} className="leading-relaxed">
+            <HtmlText as="span" className="text-white/85" html={t} />
+        </li>
       ))}
     </ol>
   );
@@ -202,7 +204,9 @@ const iconPosClass =
     : "top-6 left-6"; // Brain left again (upper-left style)
 
 return (
-    <section className="relative w-full overflow-hidden pb-28">
+    <section className="relative w-full overflow-hidden pb-28"
+        aria-labelledby="philosophy-title"
+        >
         <p className="sr-only" aria-live="polite">
             Showing: {active.title}
         </p>
@@ -225,7 +229,7 @@ return (
                         className="mt-2 mx-auto max-w-3xl text-3xl md:text-4xl font-semibold text-white text-center">
                         Build Resilience for Rural Healthcare
                     </h2>
-                    <p className="mt-3 max-w-2xl text-white/80 leading-relaxed">
+                    <p className="mt-3 mx-auto max-w-2xl text-white/80 leading-relaxed text-center">
                         Three pillars: Capital Assets, Consumables, and a Unified Command
                         Center so rural facilities can plan ahead instead of reacting late.                        
                     </p>
@@ -234,7 +238,9 @@ return (
 
             {/* tabs */}
             <div className="mt-8 flex flex-wrap justify-center gap-2"
-                role="radiogroup">
+                role="radiogroup"
+                aria-label="Select a philosophy pillar"
+                >
                 {items.map((it, i) => (
                     <button
                         key={it.key}
