@@ -20,7 +20,7 @@ export default function HumanAICollab() {
             mutual trust between human operators and AI models.
           </p>
         </div>
-
+       {/*
         <figure className="h-80 bg-[#15294F] rounded-2xl overflow-hidden">
           <div>
             <img
@@ -35,8 +35,10 @@ export default function HumanAICollab() {
           <figcaption className="px-6 py-4 text-sm text-white/80">
             Human and AI collaboration visualization for healthcare systems, illustrating ethical AI practices and human oversight in medical decision-making.
           </figcaption>
-        </figure>
-      </div>
+        </figure> 
+        */}
+      </div> 
+      
     </section>
   );
 }
