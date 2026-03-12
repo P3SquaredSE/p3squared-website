@@ -5,11 +5,12 @@ export default function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden bg-[#0B3356] text-white">
       {/* HERO IMAGE */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <img
           src={heroTop}
           alt=""
-          className="h-full w-full object-cover 
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover 
             object-bottom 
             md:object-[50%_100%]"
           loading="eager"
