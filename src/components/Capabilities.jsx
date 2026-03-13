@@ -1,5 +1,5 @@
 import React from "react";
-
+{/*
 const cards = [
   { title: "Strategize",
     desc: "Define AI-driven frameworks for system optimization." },
@@ -14,7 +14,7 @@ const cards = [
   { title: "Develop",
     desc: "Build high-perfomance, accessible software systems." },
 ];
-
+*/}
 export default function Capabilities() {
   return (
     <section id="capabilities" aria-labelledby="capabilities-title" className="py-24 bg-[#0B3356] text-white border-t border-white/5">
@@ -24,12 +24,12 @@ export default function Capabilities() {
           Where Human Insights Meets AI Precision
         </h2>
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10">
-          We design intelligent systems that combine human creativity with
-          machine efficiency to drive innovation, reliabilty, and real-world
-          impact.
+          Our team is dedicated to bringing hospitals together to centralize supply ordering for rural hospitals 
+          and then disperse those supplies to each respective facility. This decreases supply costs and supports 
+          better deliveries.
         </p>
 
-        {/* 2 x 3 cards grid (for screen readers)*/}
+        {/* 2 x 3 cards grid (for screen readers)
         <ul className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto" role="list">
           {cards.map((c) => (
             <li key={c.title}>
@@ -43,7 +43,8 @@ export default function Capabilities() {
               </div>
             </li>
           ))}
-        </ul>
+        </ul> 
+        */}
       </div>
     </section>
   );

@@ -21,17 +21,17 @@ export default function Home() {
       <Header onContactClick={openContact}/>
       <main id="main" className="pt-24" aria-label="Main content">
         <HeroSection onContactClick={openContact}/> 
-      {/*
-        <section className="container mx-auto px-6 mt-12" aria-label="Calculator section">
-          <HiddenLaborTaxCalculator onContactClick={openContact}/>
-        </section>
-      */} 
+     
         <section id="solutions">
           <Capabilities />
         </section>
-        
+       {/*
         <section id="about">
           <HumanAICollab />
+        </section> 
+        */} 
+        <section className="container mx-auto px-6 mt-12" aria-label="Calculator section">
+          <HiddenLaborTaxCalculator onContactClick={openContact}/>
         </section>
       </main>
 

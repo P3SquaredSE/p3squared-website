@@ -1,5 +1,5 @@
 import React from "react";
-import collabImg from "../assets/HumanMachineCollaboration.png";
+
 
 export default function HumanAICollab() {
   return (
