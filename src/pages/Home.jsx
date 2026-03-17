@@ -32,11 +32,7 @@ export default function Home() {
         <section id="solutions">
           <Capabilities />
         </section>
-       {/*
-        <section id="about">
-          <HumanAICollab />
-        </section> 
-        */} 
+       
         <section className="container mx-auto px-6 mt-12" aria-label="Calculator section">
           <HiddenLaborTaxCalculator onContactClick={openContact}/>
         </section>
