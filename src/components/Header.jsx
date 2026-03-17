@@ -77,7 +77,7 @@ export default function Header({ onContactClick }) {
 
           <button
             type="button"
-            onClick={() => onInvestClick?.({ preset: "investor" })}
+            onClick={() => onContactClick?.({ preset: "investor" })}
             className="inline-flex items-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition 
                       focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
              aria-label="Learn about investment opportunities"
@@ -140,7 +140,7 @@ export default function Header({ onContactClick }) {
               type="button"
               onClick={() => {
                 handleNavClick();
-                onInvestClick?.({ preset: "investor" });
+                onContactClick?.({ preset: "investor" });
               }}
               className="inline-flex items-center justify-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition
                         focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
