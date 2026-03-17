@@ -163,11 +163,12 @@ export default function OurPhilosophy({ onContactClick }) {
             blocks: [
                 { type: "h", text: "The P3Squared Solution: Automated Resilience"},
                 { type: "p", text: `P3Squared extends its forecasting engine beyond machinery to manage the flow of every consumable item, creating a "Touchless Supply Chain."`},
-                { type: "numbers", items: [
+                { type: "numbers",
+                    items: [
                     `<b>Smart Usage Tracking:</b> Instead of manual logging, we integrate with "Smart Cabinet" data and Electronic Health Records (EHR). When a doctor prescribes a flu treatment, our system automatically decrements the viral swab and medication inventory instantly.`,
                     `<b>Seasonal Predictive Ordering:</b> Our AI doesn't just replace what was used yesterday; it looks ahead. It analyzes local epidemiological data to see that flu season is spiking in the neighboring county, automatically increasing orders for antivirals and tissues before the first wave of patients walks through the door.`,
-                    `<b>Dynamic Sourcing:</b> If the primary vendor is out of stock, P3Squared instantly scans alternative verified distributors to secure essential supplies, preventing a local shortage from becoming a crisis.`
-                    `<b>Our Team:</b> We are dedicated to bringing hospitals together to centralize supply ordering for rural hospitals and then disperse those supplies to each respective facility. This decreases supply costs and supports better deliveries.`
+                    `<b>Dynamic Sourcing:</b> If the primary vendor is out of stock, P3Squared instantly scans alternative verified distributors to secure essential supplies, preventing a local shortage from becoming a crisis.`,
+                    `<b>Our Team:</b> We are dedicated to bringing hospitals together to centralize supply ordering for rural hospitals and then disperse those supplies to each respective facility. This decreases supply costs and supports better deliveries.`,
                     ],
                 }
             ],
