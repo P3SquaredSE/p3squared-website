@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 export default function ContactModal({
   isOpen,
   onClose,
   formAction, // Formspree endpoint
+  preset, // optional preset to customize modal based on context (e.g. "investor" for pre-filling message)
   titleId = "contact-modal-title",
 }) {
   const dialogRef = useRef(null);
@@ -12,6 +13,19 @@ export default function ContactModal({
 
   const [status, setStatus] = useState("idle"); // "idle" | "submitting" | "success" | "error"
   const [errorMsg, setErrorMsg] = useState("");
+
+  const inquiryOptions = useMemo(() => [
+    { value: "general", label: "General Inquiry" },
+    {value: "investor", label: "Investor Inquiry"},
+    { value: "partnership", label: "Partnership" },
+    { value: "press", label: "Press" },
+  ], []);
+
+  const [inquiryType, setInquiryType] = useState("general");
+  const [firmName, setFirmName] = useState("");
+  const [newsletterOptin, setNewsletterOptin] = useState(false);
+
+  const isInvestor = inquiryType === "investor";
 
   // Save focus and focus modal when opened; restore when closed
   useEffect(() => {
@@ -23,6 +37,15 @@ export default function ContactModal({
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    // preset handling (Investor CTA opens preselected modal)
+    if (preset === "investor") {
+      setInquiryType("investor");
+    } else {
+      setInquiryType("general");
+    }
+    setFirmName("");
+    setNewsletterOptin(false);
+
     // Focus close button first for accessibility
     requestAnimationFrame(() => closeBtnRef.current?.focus());
 
@@ -32,7 +55,7 @@ export default function ContactModal({
       setStatus("idle");
       setErrorMsg("");
     };
-  }, [isOpen]);
+  }, [isOpen, preset]);
 
   // ESC to close and focus trap
   useEffect(() => {
@@ -83,6 +106,14 @@ export default function ContactModal({
 
     try {
       const form = e.currentTarget;
+
+      //Extra guard: investor firm name must be filled
+      if (isInvestor && !firmName.trim()) {
+        setStatus("error");
+        setErrorMsg("Please provide your firm name for investor inquiries.");
+        return;
+      }
+
       const formData = new FormData(form);
 
       const res = await fetch(formAction, {
@@ -94,6 +125,11 @@ export default function ContactModal({
       if (res.ok) {
         setStatus("success");
         form.reset();
+
+        //reset controlled fields too
+        setInquiryType(preset === "investor" ? "investor" : "general");
+        setFirmName("");
+        setNewsletterOptin(false);
       } else {
         const data = await res.json().catch(() => null);
         setStatus("error");
@@ -168,6 +204,46 @@ export default function ContactModal({
           )}
 
           <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+            {/* Inquiry Type */}
+            <div>
+              <label htmlFor="contact-inquiry" className="block text-sm font-medium">
+                Inquiry Type <span className="text-white/70">(required)</span>
+              </label>
+              <select
+                id="contact-inquiry"
+                name="inquiryType"
+                value={inquiryType}
+                onChange={(e) => setInquiryType(e.target.value)}
+                className="mt-2 w-full rounded-lg bg-white/10 px-4 py-3 text-white border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
+              >
+                {inquiryOptions.map((option) => (
+                  <option key={option.value} value={option.value} className="text-black">
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Firm Name (only for investors) */}
+            {isInvestor && (
+              <div>
+                <label htmlFor="contact-firm" className="block text-sm font-medium">
+                  Firm Name <span className="text-white/70">(required for investors)</span>
+                </label>
+                <input
+                  id="contact-firm"
+                  name="firmName"
+                  type="text"
+                  required
+                  value={firmName}
+                  onChange={(e) => setFirmName(e.target.value)}
+                  className="mt-2 w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder:text-white/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
+                  placeholder="Your firm's name"
+                />
+              </div>
+            )}
+
+            {/* Full Name */}
             <div>
               <label htmlFor="contact-name" className="block text-sm font-medium">
                 Full name <span className="text-white/70">(optional)</span>
@@ -182,6 +258,7 @@ export default function ContactModal({
               />
             </div>
 
+            {/* Email */}
             <div>
               <label htmlFor="contact-email" className="block text-sm font-medium">
                 Email <span className="text-white/70">(required)</span>
@@ -197,6 +274,7 @@ export default function ContactModal({
               />
             </div>
 
+            {/* Message */}
             <div>
               <label htmlFor="contact-message" className="block text-sm font-medium">
                 Message <span className="text-white/70">(required)</span>
@@ -207,9 +285,31 @@ export default function ContactModal({
                 required
                 rows={5}
                 className="mt-2 w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder:text-white/50 border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
-                placeholder="How can we help?"
+                placeholder={isInvestor ? "Tell us about your firm?" : "How can we help?"}
               />
             </div>
+
+            {/* Newsletter Opt-in */}
+            <div className="flex items-start gap-3">
+              <input
+                id="newsletter-optin"
+                name="newsletterOptin"
+                type="checkbox"
+                checked={newsletterOptin}
+                onChange={(e) => setNewsletterOptin(e.target.checked)}
+                className="mt-1 h-4 w-4 rounded border-white/30 bg-white/10"
+              />
+              <label htmlFor="newsletter-optin" className="text-sm">
+                Sign me up for the newsletter (we send updates)
+              </label>
+            </div>
+
+            {/* tag for formspree filtering */}
+            <input
+              type="hidden"
+              name="leadCategory"
+              value={isInvestor ? "Investor" : "General"}
+            />
 
             <button
               type="submit"

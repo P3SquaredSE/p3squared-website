@@ -6,9 +6,16 @@ import OurPhilosophy from "../components/OurPhilosophy";
 
 export default function Philosophy() {
     const [isContactOpen, setIsContactOpen] = useState(false);
+    const [ contactPreset, setContactPreset ] = useState(null);
 
-    const openContact = () => setIsContactOpen(true);
-    const closeContact = () => setIsContactOpen(false);
+    const openContact = (opts) => {
+      setContactPreset(opts?.preset ?? null);
+      setIsContactOpen(true);
+    };
+    const closeContact = () => {
+      setIsContactOpen(false);
+      setContactPreset(null);
+    };
 
     const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; //Formspree endpoint
 
@@ -24,6 +31,7 @@ export default function Philosophy() {
                 isOpen={isContactOpen}
                 onClose={closeContact}
                 formAction={CONTACT_FORM_ACTION}
+                preset={contactPreset}
             />
         </div>
     );

@@ -5,6 +5,7 @@ import logo from "../assets/P3SquaredSElogo.png";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/philosophy", label: "Philosophy" },
+  { href: "/#solutions", label: "Solutions" },
   { href: "/#team", label: "Team" },
 ];
 
@@ -74,14 +75,15 @@ export default function Header({ onContactClick }) {
             Contact Us
           </button>
 
-          <a
-            href="#invest"
+          <button
+            type="button"
+            onClick={() => onInvestClick?.({ preset: "investor" })}
             className="inline-flex items-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition 
                       focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
              aria-label="Learn about investment opportunities"
             >
               Invest
-          </a>
+          </button>
         </div>
 
 
@@ -134,15 +136,18 @@ export default function Header({ onContactClick }) {
               Contact Us
             </button>
 
-            <a
-              href="#invest"
-              onClick={handleNavClick}
+            <button
+              type="button"
+              onClick={() => {
+                handleNavClick();
+                onInvestClick?.({ preset: "investor" });
+              }}
               className="inline-flex items-center justify-center rounded-lg bg-[#27D5E6] px-5 py-2 text-[#041023] font-semibold shadow-md hover:bg-[#1EC4D4] transition
                         focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
               aria-label="Learn about investment opportunities"
             >
               Invest
-            </a>
+            </button>
           </nav>
         </div>
       )}

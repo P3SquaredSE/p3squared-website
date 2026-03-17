@@ -9,9 +9,16 @@ import HiddenLaborTaxCalculator from "../components/HiddenLaborTaxCalculator";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [ contactPreset, setContactPreset ] = useState(false);
 
-    const openContact = () => setIsContactOpen(true);
-    const closeContact = () => setIsContactOpen(false);
+    const openContact = (opts) => {
+      setContactPreset(opts?.preset ?? null);
+      setIsContactOpen(true);
+    };
+    const closeContact = () => {
+      setIsContactOpen(false);
+      setContactPreset(null);
+    };
 
     const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; //Formspree endpoint
 
@@ -39,6 +46,7 @@ export default function Home() {
         isOpen={isContactOpen}
         onClose={closeContact}
         formAction={CONTACT_FORM_ACTION}
+        preset={contactPreset} 
       />
     </div>
   );
