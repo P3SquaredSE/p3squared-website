@@ -5,8 +5,9 @@ import logo from "../assets/P3SquaredSElogo.png";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/philosophy", label: "Philosophy" },
-  { href: "/#team", label: "Team" }, 
-  {href: "/#costs", label: "Costs"}
+  {href: "/#costs", label: "Costs"}, 
+  {href: "/#team", label: "Team"},
+  {href: "/#blog", label: "Blog"}
 ];
 
 export default function Header({ onContactClick }) {
