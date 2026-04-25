@@ -277,24 +277,31 @@ return (
                         className="relative rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 shadow-xl"
                     >
                         {/* Floating icon */}
-                        <div
-                            className="
-                                flex items-center justify-center
-                                w-16 h-16 mx-auto mb-4
-                                rounded-2xl border border-white/20 bg-white/10 p-3
-                                md:absolute md:top-6 md:left-6 md:w-auto md:h-auto md:mx-0 md:mb-0"
+                        <div className="
+                        flex-shrink-0
+                        w-12 h-12
+                        rounded-xl border border-white/20 bg-white/10 p-2
+                        md:absolute md:top md:left md:w-auto md:h-auto"
                         >
-                            <img
+                            <img 
                                 src={active.icon}
                                 alt=""
                                 aria-hidden="true"
-                                className="h-10 w-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]"
+                                className="h-8 w-8 md:h-10 md:w-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]"
                             />
                         </div>
 
+                        {/* Title */}
+                        <h3 
+                            id="active-card-title"
+                            className="text-lg md:text-2xl font-semibold text-white leading-tight"
+                        >
+                            {active.title}
+                        </h3>
+
                         {/* Content padding so text doesn't collide with icon */}
                         <div
-                            className="min-w-0 px-0 md:pl-24">
+                            className="min-w-0 mt-3 md:pl-24">
                             <h3 
                                 id="active-card-title"
                                 className="text-lg md:text-2xl font-semibold text-white">
