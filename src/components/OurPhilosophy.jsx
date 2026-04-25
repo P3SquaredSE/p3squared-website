@@ -281,7 +281,7 @@ return (
                         flex-shrink-0
                         w-12 h-12
                         rounded-xl border border-white/20 bg-white/10 p-2
-                        md:absolute md:top md:left md:w-auto md:h-auto"
+                        md:absolute md:top-0 md:left-0 md:mb-0"
                         >
                             <img 
                                 src={active.icon}
@@ -294,14 +294,14 @@ return (
                         {/* Title */}
                         <h3 
                             id="active-card-title"
-                            className="text-lg md:text-2xl font-semibold text-white leading-tight"
+                            className="text-lg md:text-2xl font-semibold text-white leading-tight md:pl-16"
                         >
                             {active.title}
                         </h3>
 
                         {/* Content padding so text doesn't collide with icon */}
                         <div
-                            className="min-w-0 mt-3 md:pl-24">
+                            className="min-w-0 mt-3 md:pl-16">
                             <h3 
                                 id="active-card-title"
                                 className="text-lg md:text-2xl font-semibold text-white">
