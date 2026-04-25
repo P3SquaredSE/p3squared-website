@@ -195,15 +195,14 @@ const prev = useCallback(
 );
 
 const active = items[index];
-
 const prefersReducedMotion = useReducedMotion();
 
-const iconPosClass =
+/* const iconPosClass =
   active.key === "capital-assets"
     ? "top-6 left-6" // MRI upper-left
     : active.key === "consumables"
     ? "top-1/2 right-6 -translate-y-1/2" // Pill middle-right
-    : "top-6 left-6"; // Brain left again (upper-left style)
+    : "top-6 left-6"; // Brain left again (upper-left style) */
 
 return (
     <section className="relative w-full overflow-hidden pb-28"
@@ -239,7 +238,7 @@ return (
             </div>
 
             {/* tabs */}
-            <div className="mt-8 flex flex-wrap justify-center gap-2"
+            <div className="mt-6 gap-2 overflow-x-auto pb-2 no-scrollbar"
                 role="radiogroup"
                 aria-label="Select a philosophy pillar"
                 >
@@ -251,7 +250,7 @@ return (
                         role="radio"
                         aria-checked={i === index}
                         aria-label={`Show ${it.title}`}
-                        className={["flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition",
+                        className={["flex items-center gap-2 rounded-full border px-4 py-2 text-sm whitespace-nowrap",
                             i === index
                                 ? "border-white/30 bg-white/15 text-white"
                                 : "border-white/10 bg-white/5 text-white/80 hover:bg-white/10",
@@ -279,11 +278,11 @@ return (
                     >
                         {/* Floating icon */}
                         <div
-                            className={[
-                                "absolute",
-                                iconPosClass,
-                                "rounded-2xl border border-white/20 bg-white/10 p-3",
-                            ].join(" ")}
+                            className="
+                                flex items-center justify-center
+                                w-16 h-16 mx-auto mb-4
+                                rounded-2xl border border-white/20 bg-white/10 p-3
+                                md:absolute md:top-6 md:left-6 md:w-auto md:h-auto md:mx-0 md:mb-0"
                         >
                             <img
                                 src={active.icon}
@@ -295,22 +294,19 @@ return (
 
                         {/* Content padding so text doesn't collide with icon */}
                         <div
-                            className={[
-                                "min-w-0",
-                                active.key === "consumables" ? "pr-24" : "pl-24",
-                            ].join(" ")}
-                        >
+                            className="min-w-0 px-0 md:pl-24">
                             <h3 
                                 id="active-card-title"
-                                className="text-xl md:text-2xl font-semibold text-white">
+                                className="text-lg md:text-2xl font-semibold text-white">
                                 {active.title}
                             </h3>
                             <CardBody blocks={active.blocks} />
                         </div>
                     </motion.div>
                 </AnimatePresence>
-
-                <div className="sticky bottom-4 mt-6 flex justify-end gap-2">
+                
+                {/* Navigation buttons */}
+                <div className="sticky bottom-0 mt-6 flex flex-col gap-2 bg-[#0B3356]/80 backdrop-blur-sm rounded-xl md:flex-row md:justify-end md:bg-transparent md:p-0">
                     <button
                         type="button"
                         onClick={prev}
