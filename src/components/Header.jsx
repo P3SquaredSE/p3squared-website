@@ -5,7 +5,7 @@ import logo from "../assets/P3SquaredSElogo.png";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/philosophy", label: "Philosophy" },
-  {href: "/#costs", label: "Costs"}, 
+  {href: "/Costs", label: "Costs"}, 
   {href: "/#team", label: "Team"},
   {href: "/#blog", label: "Blog"}
 ];
