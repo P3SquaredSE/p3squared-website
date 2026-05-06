@@ -117,18 +117,6 @@ export default function OurPhilosophy({ onContactClick }) {
                         When equipment fails, patients must be transferred to hospitals many miles away. This separates patients
                         from their support systems and families while driving up costs by forcing care into more expensive, distant facilities.`
                     },
-                    {type: "h", text: "The Engineering Mandate: From Prediction to Forecasting "},
-                    {type: "p", text: `Anticipating these failures is the only way to stabilize the rural health system. As researcher
-                        L. Subramanian states, "A good health system will necessitate a supply chain that can deliver and guarantee affordable
-                        health commodities at the appropriate quality." Crucially, Subramanian notes that supply chains must not only deliver
-                        hardware but must "return information on demand, consumption, and shortages to the health planners" (Logistics, 2021).`
-                    },
-                    {type: "p", text: `This is where P3Squared steps in. We believe that bottlenecks can be erased through collaboration and
-                        continuous, AI-assisted information flow. It is no longer enough to react to a breakdown. Rural clinics need to move
-                        beyond mere prediction (guessing when a break might occur) to forecasting (identifying potential future events to proactively manage the supply chain).`},
-                    {type: "p", text: `By utilizing software to bridge the gap between inventory, skilled labor availability, and equipment status, we can
-                        support the "underserved superheroes" of rural healthcare, ensuring that distance and budget are no longer barriers to saving lives.`
-                    },
             ],
         },
 
