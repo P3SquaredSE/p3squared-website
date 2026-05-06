@@ -17,13 +17,7 @@ export default function HeroSection() {
               <img
                 src={heroTop}
                 alt="Healthcare AI"
-                className="
-                  w-full
-                  max-w-[500px]
-                  object-contain
-                "
-                loading="eager"
-                decoding="async"
+                className="w-full max-w-[500px] object-contain"
               />
             </div>
 
@@ -52,15 +46,7 @@ export default function HeroSection() {
             src={heroTop}
             alt=""
             aria-hidden="true"
-            className="
-              absolute inset-0
-              h-full
-              w-full
-              object-cover
-              object-[72%_center]
-            "
-            loading="eager"
-            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-bottom md:object-[50%_100%]"
           />
 
           {/* Gradient Overlay */}
@@ -69,15 +55,15 @@ export default function HeroSection() {
 
         {/* CONTENT */}
         <div className="relative z-10">
-          <div className="container mx-auto px-6 py-28 lg:py-32">
+          <div className="container mx-auto px-6 py-20 md:py-28 lg:py-32">
             
             {/* LEFT CARD */}
-            <div className="max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-8 py-9">
+            <div className="max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-6 py-7 md:px-8 md:py-9">
               <p className="text-xs tracking-[0.25em] text-white/70 font-semibold">
                 WELCOME TO
               </p>
 
-              <h1 className="mt-3 text-5xl font-bold leading-tight">
+              <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 Transforming Rural Healthcare
                 <br />
                 with AI + Human Oversight
@@ -86,7 +72,7 @@ export default function HeroSection() {
           </div>
 
           {/* Image HEIGHT */}
-          <div className="h-[360px]" />
+          <div className="h-[280px] md:h-[320px] lg:h-[360px]" />
         </div>
       </div>
     </section>
