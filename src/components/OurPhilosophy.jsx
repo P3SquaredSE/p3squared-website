@@ -238,7 +238,7 @@ return (
             </div>
 
             {/* tabs */}
-            <div className="mt-6 gap-2 overflow-x-auto pb-2 no-scrollbar"
+            <div className="mt-6 flex gap-2 overflow-x-auto pb-2 no-scrollbar"
                 role="radiogroup"
                 aria-label="Select a philosophy pillar"
                 >
@@ -276,42 +276,29 @@ return (
                         tabIndex={-1}
                         className="relative rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8 shadow-xl"
                     >
-                        {/* Floating icon */}
-                        <div className="
-                        flex-shrink-0
-                        w-12 h-12
-                        rounded-xl border border-white/20 bg-white/10 p-2
-                        md:absolute md:top-0 md:left-0 md:mb-0"
-                        >
-                            <img 
-                                src={active.icon}
-                                alt=""
-                                aria-hidden="true"
-                                className="h-8 w-8 md:h-10 md:w-10 drop-shadow-[0_2px_10px_rgba(255,255,255,0.35)]"
-                            />
-                        </div>
+                        {/* Header icon */}
+                       <div className="flex items-start gap-4">
+                            <div className="flex-shrink-0 w-12 h-12 rounded-xl border border-white/20 bg-white/10 p-2 flex items-center justify-center">
+                                <img
+                                    src={active.icon}
+                                    alt=""
+                                    className="h-8 w-8 md:h-10 md:w-10"
+                                />
+                            </div>
 
-                        {/* Title */}
-                        <h3 
-                            id="active-card-title"
-                            className="text-lg md:text-2xl font-semibold text-white leading-tight md:pl-16"
-                        >
-                            {active.title}
-                        </h3>
-
-                        {/* Content padding so text doesn't collide with icon */}
-                        <div
-                            className="min-w-0 mt-3 md:pl-16">
-                            <h3 
-                                id="active-card-title"
-                                className="text-lg md:text-2xl font-semibold text-white">
+                            <h3 id="active-card-title" 
+                            className="text-lg md:text-2xl font-semibold text-white leading-tight">
                                 {active.title}
                             </h3>
+                        </div>
+
+                        {/*Content blocks */}
+                        <div className="mt-4">
                             <CardBody blocks={active.blocks} />
                         </div>
                     </motion.div>
                 </AnimatePresence>
-                
+
                 {/* Navigation buttons */}
                 <div className="sticky bottom-0 mt-6 flex flex-col gap-2 bg-[#0B3356]/80 backdrop-blur-sm rounded-xl md:flex-row md:justify-end md:bg-transparent md:p-0">
                     <button
