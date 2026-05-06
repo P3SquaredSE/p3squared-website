@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end lg:translate-x-12">
             <img
               src={heroTop}
               alt="Healthcare AI"
