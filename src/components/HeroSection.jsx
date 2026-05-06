@@ -3,40 +3,48 @@ import heroTop from "../assets/P3SquaredSE.png";
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative overflow-hidden bg-[#0B3356] text-white">
-      {/* HERO IMAGE */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={heroTop}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover 
-            object-bottom 
-            md:object-[50%_100%]"
-          loading="eager"
-          decoding="async"
-        />
+    <section
+      id="home"
+      className="relative overflow-hidden bg-[#0B3356] text-white"
+    >
+      {/* Background Overlay */}
+      <div className="absolute inset-0 bg-[#0B3356]" />
 
-        {/* Dark gradient for readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B3356]/55 via-[#0B3356]/20 to-transparent" />
-      </div>
-      {/* CONTENT CARD */}
-      <div className="relative z-10">
-        <div className="container mx-auto px-6 py-20 md:py-28 lg:py-32">
-          {/* Left Overlay Card */}
-          <div className="max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-6 py-7 md:px-8 md:py-9">
-            <p className="text-xstracking-[0.25em] text-white/70 font-semibold">
-              WELCOME TO
-            </p>
+      <div className="relative z-10 container mx-auto px-6 py-16 md:py-24 lg:py-28">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
+          
+          {/* LEFT CONTENT */}
+          <div className="order-2 lg:order-1">
+            <div className="max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-6 py-7 md:px-8 md:py-9">
+              <p className="text-xs tracking-[0.25em] text-white/70 font-semibold">
+                WELCOME TO
+              </p>
 
-            <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-              Transforming Rural Healthcare
-              <br className="hidden sm:block" />
-              with AI + Human Oversight
-            </h1>            
+              <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                Transforming Rural Healthcare
+                <br className="hidden sm:block" />
+                with AI + Human Oversight
+              </h1>
+            </div>
           </div>
-        </div>       
-        <div className="h-[280px] md:h-[320px] lg:h-[360px]" />
+
+          {/* RIGHT IMAGE */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <img
+              src={heroTop}
+              alt="Healthcare AI"
+              className="
+                w-full
+                max-w-[500px]
+                md:max-w-[600px]
+                lg:max-w-[700px]
+                object-contain
+              "
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
