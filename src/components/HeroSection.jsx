@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-[#0B3356]" />
 
       <div className="relative z-10 container mx-auto px-6 py-16 md:py-24 lg:py-28">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
+        <div className="grid items-center gap-5 lg:grid-cols-2">
           
           {/* LEFT CONTENT */}
           <div className="order-2 lg:order-1">
@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
 
           {/* RIGHT IMAGE */}
-          <div className="order-1 lg:order-2 flex justify-center lg:justify-end lg:translate-x-12">
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <img
               src={heroTop}
               alt="Healthcare AI"
@@ -37,8 +37,8 @@ export default function HeroSection() {
                 w-full
                 max-w-[500px]
                 md:max-w-[600px]
-                lg:max-w-[700px]
-                object-contain
+                lg:max-w-[800px]
+                object-cover
               "
               loading="eager"
               decoding="async"
