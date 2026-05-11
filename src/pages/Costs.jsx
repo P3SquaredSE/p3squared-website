@@ -41,7 +41,7 @@ export default function Costs() {
         isOpen={isContactOpen}
         onClose={closeContact}
         formAction={CONTACT_FORM_ACTION}
-        preset={contactPreset}
+        preset={contactPreset} 
       />
     </div>
   );
