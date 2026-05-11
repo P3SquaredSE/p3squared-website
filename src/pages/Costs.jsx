@@ -1,4 +1,4 @@
-
+import Header from "../components/Header";
 import HeroSection from "../components/HeroSection";
 import Capabilities from "../components/Capabilities"; 
 import ContactModal from "../components/ContactModal";
