@@ -1,3 +1,6 @@
+
+// WE DONT NEED THIS COMPONENT ANYMORE, BUT I DONT WANT TO DELETE IT JUST YET IN CASE WE WANT TO REUSE IT IN THE FUTURE
+
 import React from "react";
 
 export default function Capabilities() {
