@@ -38,7 +38,7 @@ export default function Costs() {
             </p>
 
             <h1 className="mt-3 text-3xl md:text-5xl font-semibold">
-              Labor Tax Calculator
+              Labor Calculator
             </h1>
 
             <p className="mt-4 mx-auto max-w-3xl text-white/80 leading-relaxed">

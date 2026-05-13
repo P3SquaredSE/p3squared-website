@@ -33,9 +33,6 @@ export default function Home() {
           <Capabilities />
         </section>
        
-        <section className="container mx-auto px-6 mt-12" aria-label="Calculator section">
-          <HiddenLaborTaxCalculator onContactClick={openContact}/>
-        </section>
       </main>
 
       <ContactModal
