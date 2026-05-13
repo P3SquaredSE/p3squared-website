@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
+
+import Header from "../components/Header"; 
 import ContactModal from "../components/ContactModal";
 import HiddenLaborTaxCalculator from "../components/HiddenLaborTaxCalculator";
 
@@ -19,28 +20,47 @@ export default function Costs() {
 
   const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp";
 
-  return ( 
-  <div className="min-h-screen bg-[#0B3356] text-white">
-    <Header onContactClick={openContact}/>
-    
-      <main id="main3" className="pt-24" aria-label="Main content">
-        <HeroSection onContactClick={openContact}/>
-        
-        <section id="solutions">
-          
-          <Capabilities />
+  return (
+    <div className="min-h-screen bg-[#0B3356] text-white">
+      <Header onContactClick={openContact} />
+
+      <main id="main" className="pt-24" aria-label="Main content">
+        {/*Page Header */}
+        <section className="relative overflow-hidden">
+          {/* Background glow */}
+          <div className="pointer-events-none absolute inset-0 opacity-70">
+            <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
+          </div>
+
+          <div className="relative container mx-auto px-6 py-14 md:py-20 text-center">
+            <p className="text-white/80 text-sm tracking-wide uppercase">
+              Cost Analysis
+            </p>
+
+            <h1 className="mt-3 text-3xl md:text-5xl font-semibold">
+              Labor Tax Calculator
+            </h1>
+
+            <p className="mt-4 mx-auto max-w-3xl text-white/80 leading-relaxed">
+              Estimate operational inefficiencies, labor waste, 
+              and hidden supply chain costs impacting rural healthcare facilities.
+            </p>
+          </div>
         </section>
-        
-        <section className="container mx-auto px-6 mt-12" aria-label="Calculator section">
-          <HiddenLaborTaxCalculator onContactClick={openContact}/>
+
+        {/* Calculator */}
+        <section className="container mx-auto px-4 md:px-6 pb-20" aria-label="Calculator section">
+          <HiddenLaborTaxCalculator 
+            onContactClick={openContact}
+          />
         </section>
       </main>
-      
+
       <ContactModal
         isOpen={isContactOpen}
         onClose={closeContact}
-        formAction={CONTACT_FORM_ACTION}
-        preset={contactPreset} 
+        preset={contactPreset}
+        action={CONTACT_FORM_ACTION}
       />
     </div>
   );
