@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Header from "../components/Header"; 
 import ContactModal from "../components/ContactModal";
-import HiddenLaborTaxCalculator from "../components/HiddenLaborTaxCalculator";
+import LaborCalculator from "../components/LaborCalculator";
 
 export default function Costs() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -49,8 +49,8 @@ export default function Costs() {
         </section>
 
         {/* Calculator */}
-        <section className="container mx-auto px-4 md:px-6 pb-20" aria-label="Calculator section">
-          <HiddenLaborTaxCalculator 
+        <section className="container mx-auto px-4 md:px-6 pb-20 max-w-5xl" aria-label="Calculator section">
+          <LaborCalculator 
             onContactClick={openContact}
           />
         </section>

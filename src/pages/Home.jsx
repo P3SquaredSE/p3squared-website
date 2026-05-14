@@ -4,7 +4,7 @@ import HeroSection from "../components/HeroSection";
 import Capabilities from "../components/Capabilities";
 import HumanAICollab from "../components/HumanAICollab";
 import ContactModal from "../components/ContactModal";
-import HiddenLaborTaxCalculator from "../components/HiddenLaborTaxCalculator";
+import HiddenLaborTaxCalculator from "../components/LaborCalculator";
 
 
 export default function Home() {

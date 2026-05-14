@@ -13,7 +13,7 @@ function formatUSD(value) {
 }
 
 
-export default function HiddenLaborTaxCalculator({ 
+export default function LaborCalculator({ 
     drag = DEFAULT_DRAG,
     hoursPerYear = DEFAULT_HOURS,
     onCOntactClick,
