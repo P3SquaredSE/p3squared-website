@@ -21,46 +21,55 @@ export default function Costs() {
   const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp";
 
   return (
-    <div className="min-h-screen bg-[#0B3356] text-white">
+    <div className="min-h-screen overflow-hidden bg-[#0B3356] text-white">
       <Header onContactClick={openContact} />
 
-      <main id="main" className="pt-24" aria-label="Main content">
-        {/*Page Header */}
-        <section className="relative overflow-hidden">
-          {/* Background glow */}
-          <div className="pointer-events-none absolute inset-0 opacity-70">
-            <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
-          </div>
+      <main id="main" className="relative pt-24" aria-label="Main content">
 
-          <div className="relative container mx-auto px-6 py-14 md:py-20 text-center">
-            <p className="text-white/80 text-sm tracking-wide uppercase">
+        {/* Background glow */}
+        <div className="pointer-events-none absolute inset-0 opacity-70 overflow-hidden">
+          <div className="absolute -top-32 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
+          
+          <div className="absolute bottom-0 right-[-120px] h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
+        </div>
+
+        {/* Hero section */}
+        <section className="relative">
+          <div className="container mx-auto px-6 py-16 md:py-24 text-center">
+            <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">
               Cost Analysis
             </p>
 
-            <h1 className="mt-3 text-3xl md:text-5xl font-semibold">
-              Labor Calculator
+            <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+              Healthcare Operations
+              <br className="hidden md:block" />
+              Impact Simulator
             </h1>
 
-            <p className="mt-4 mx-auto max-w-3xl text-white/80 leading-relaxed">
-              Estimate operational inefficiencies, labor waste, 
-              and hidden supply chain costs impacting rural healthcare facilities.
+            <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/75 leading-relaxed">
+              Estimate operational inefficiencies, labor waste, and
+              hidden supply chain costs affecting rural
+              healthcare facilities.
             </p>
           </div>
         </section>
 
-        {/* Calculator */}
-        <section className="container mx-auto px-4 md:px-6 pb-20 max-w-5xl" aria-label="Calculator section">
+        {/* Labor Calculator */}
+        <section className="relative container mx-auto max-w-7xl px-4 md:px-6 pb-24"
+          aria-label="Calculator section"
+          >
           <LaborCalculator 
-            onContactClick={openContact}
+          onContactClick={openContact}
           />
         </section>
+
       </main>
 
       <ContactModal
         isOpen={isContactOpen}
         onClose={closeContact}
-        preset={contactPreset}
-        action={CONTACT_FORM_ACTION}
+        formAction={CONTACT_FORM_ACTION}
+        preset={contactPreset}  
       />
     </div>
   );

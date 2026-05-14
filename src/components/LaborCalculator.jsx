@@ -1,10 +1,11 @@
 import React, { useMemo, useState } from "react";
 
-const DEFAULT_DRAG = 0.2; //20% Logistics Drag
+const DEFAULT_DRAG = 20; //20% Logistics Drag
 const DEFAULT_HOURS = 2080; //standard working Hours in a Year
 
 function formatUSD(value) {
     if (!Number.isFinite(value)) return "$0";
+
     return value.toLocaleString("en-US", {
         style: "currency",
         currency: "USD",
@@ -14,157 +15,224 @@ function formatUSD(value) {
 
 
 export default function LaborCalculator({ 
-    drag = DEFAULT_DRAG,
     hoursPerYear = DEFAULT_HOURS,
     onCOntactClick,
 }) {
     //inputs by user
     const [staffCount, setStaffCount] = useState(0);
     const [hourlyWage, setHourlyWage] = useState(0);
+    const [dragPercent, setDragPercent] = useState(DEFAULT_DRAG);
 
-    //WCAG 
-    const staffValid = Number.isFinite(staffCount) && staffCount > 0;
-    const wageValid = Number.isFinite(hourlyWage) && hourlyWage > 0;
+    const drag = dragPercent / 100;
 
-    //Derived values
+
     const annualWaste = useMemo(() => {
-        if (!staffValid || !wageValid) return 0;
         return staffCount * hourlyWage * hoursPerYear * drag;
-    }, [staffCount, hourlyWage, hoursPerYear, drag, staffValid, wageValid]);
+    }, [staffCount, hourlyWage, drag, hoursPerYear]);
 
     const monthlyWaste = annualWaste / 12;
     const weeklyWaste = annualWaste / 52;
+    const dailyWaste = annualWaste / 260; //approximate number of working days in a year
 
-    const handleReset = () => {
-        setStaffCount(50);
-        setHourlyWage(45);
-    };
 
     return (
-        <section
+        <section 
             id="calculator"
-            aria-labelledby="hlt-title"
-            className="w-full bg-[#041023]/20 border border-white/10 rounded-2xl p-6 md:p-8"
-            >
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
-                    <div className="max-w-2xl">
-                        <h2 id="hlt-title" className="text-2xl md:text-3xl font-bold">
-                            Labor Calculator
-                        </h2>
-                        
-                    </div>
+            aria-labelledby="impact-title"
+            className="w-full rounded-3xl border border-white/10 bg-[#071A2E]/80 p-6 md:p-10 shadow-2xl"
+        >
+            <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
+                <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#163b63] to-[#0A2340] p-8 md:p-10">
+                    <p className="text-sm uppercase tracking-[0.25em] text-cyan-300/80">
+                        Labor Calculator
+                    </p>
 
-                    <div
-                        className="rounded-xl bg-white/5 border border-white/10 p-4 md:p-5 min-w-[260px]"
-                        aria-live="polite"
-                    >
-                        <p className="text-sm text-white/70">Estimated Annual Waste</p>
-                        <p className="mt-2 text-3xl font-extrabold tracking-tight">
-                            {formatUSD(annualWaste)}
-                        </p>
+                    <h2 id="impact-title" className="mt-4 md:text-7xl font-bold tracking-tight">
+                        {formatUSD(annualWaste)}
+                    </h2>
 
-                        <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
-                            <div className="rounded-lg bg-white/5 p-3">
-                                <p className="text-white/70">Monthly Waste</p>
-                                <p className="text-white font-semibold">{formatUSD(monthlyWaste)}</p>
-                            </div>
-                            <div className="rounded-lg bg-white/5 p-3">
-                                <p className="text-white/70">Weekly Waste</p>
-                                <p className="text-white font-semibold">{formatUSD(weeklyWaste)}</p>
-                            </div>
-                        </div>
+                    <p className="mt-4 max-w-2xl text-lg text-white/75 leading-relaxed">
+                        Estimated annual productivity and logistics waste caused by inefficient
+                        supply coordination, manual workflows, and operational interruptions.
+                    </p>
 
-                        {onCOntactClick && (
-                            <button
-                                type="button"
-                                onClick={onCOntactClick}
-                                className="mt-4 w-full rounded-lg bg-[#27D5E6] py-3 font-bold text-[#041023] hover:bg-[#1EC4D4] transition
-                                    focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-                                aria-label="Contact us about reducing logistics waste">
-                                    Talk to us about reducing this
-                                </button>
-                        )}
+                    <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <MetricCard
+                            label="Monthly"
+                            value={formatUSD(monthlyWaste)}
+                        />
+                        <MetricCard
+                            label="Weekly"
+                            value={formatUSD(weeklyWaste)}
+                        />
+                        <MetricCard
+                            label="Daily"
+                            value={formatUSD(dailyWaste)}
+                        />
+                        <MetricCard
+                            label="Drag"
+                            value={`${dragPercent}%`}
+                        />
                     </div>
                 </div>
 
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Staff Count Input */}
-                    <div>
-                        <label htmlFor="staff-count" className="block text-sm font-semibold">
-                            Number of Clinical Staff (e.g., nurses, techs)
-                        </label>
-                        <p id="staff-help" className="mt-1 text-sm text-white/70">
-                            Total number of clinical staff whose time is impacted by logistics tasks.
-                        </p>
+                {/* right panel */}
+                <div className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+                    <p className="text-sm uppercase tracking-wide text-cyan-300">
+                        P3Squared Insight
+                    </p>
 
-                        <input
-                            id="staffCount"
-                            name="staffCount"
-                            type="number"
-                            inputMode="numeric"
-                            min={0}
+                    <h3 className="mt-4 text-2xl font-semibold">
+                        Operational Intelligence Matters
+                    </h3>
+
+                    <p className="mt-4 text-white/75 leading-relaxed">
+                        A rural healthcare facility with{" "}
+                        <span className="font-semibold text-white">
+                            {staffCount} clinical staff
+                        </span>{" "}
+                        operating under a{" "}
+                        <span className="font-semibold text-white">
+                            {dragPercent}% logistics drag
+                        </span>{" "}
+                        could lose nearly{" "}
+                        <span className="font-semibold text-white">
+                            {formatUSD(annualWaste)}
+                        </span>{" "}
+                        annually through fragmented workflows, delayed inventory access,
+                        and manual coordination.
+                    </p>
+
+                    <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-4">
+                        <p className="text-sm text-cyan-100 leading-relaxed">
+                            P3Squared helps healthcare systems forecast operational risk, reduce supply chain inefficiencies,
+                            and improve workforce productivity through AI-assisted coordination.
+                        </p>
+                    </div>
+
+                    {onCOntactClick && (
+                        <button
+                            type="button"
+                            onclick={onCOntactClick}
+                            className="mt-8 w-full rounded-2xl bg-[#27D5E6] px-6 py-4 text-lg font-bold text-[#041023] transition hover:bg-[#1EC4D4] 
+                            focus:outline-none focus:ring-2 focus:ring-white/70"
+                            >
+                                Request Operational Assessment
+                            </button>
+                    )}
+                </div>
+            </div>
+
+            {/* Controls */}
+            <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+                    <h3 className="text-xl font-semibold">
+                        Simulation Controls
+                    </h3>
+
+                    <p className="mt-2 text-white/70">
+                        Adjust staffing, labor cost, and operational drag to estimate
+                        organizational waste.
+                    </p>
+
+                    <div className="mt-8 grid gap-8 md:grid-cols-3">
+                        {/* Staff Count */}
+                        <SliderControl
+                            label="Clinical Staff Count"
+                            value={staffCount}
+                            min={1}
+                            max={500}
                             step={1}
-                            value={Number.isFinite(staffCount) ? staffCount : ""}
-                            onChange={(e) => setStaffCount(parseInt(e.target.value))}
-                            aria-describedby="staff-help staff-error"
-                            aria-invalid={!staffValid}
-                            className="mt-2 w-full rounded-lg bg-white/10 px-4 py-3 text-white placeholder:text-white/50 
-                                border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
+                            suffix=" staff"
+                            onChange={setStaffCount}
                         />
 
-                        {!staffValid && (
-                            <p id="staff-error" className="mt-2 text-sm text-red-300">
-                                Please enter a valid staff count (0 or higher).
-                            </p>
-                        )}
+                        {/* Hourly Wage */}
+                        <SliderControl
+                            label="Average Hourly Wage"
+                            value={hourlyWage}
+                            min={1}
+                            max={120}
+                            step={1}
+                            prefix="$"
+                            suffix="/hr"
+                            onChange={setHourlyWage}
+                        />
+
+                        {/* Drag */}
+                        <SliderControl
+                            label="Logistics Drag"
+                            value={dragPercent}
+                            min={0}
+                            max={40}
+                            step={1}
+                            suffix="%"
+                            onChange={setDragPercent}
+                        />
                     </div>
-
-                    {/* Hourly Wage Input */}
-                    <div>
-                        <label htmlFor="hourly-wage" className="block text-sm font-semibold">
-                            Average hourly wage (fully loaded)
-                        </label>
-                        <p id="wage-help" className="mt-1 text-sm text-white/70">
-                            Include benefits and overhead costs if possible.
-                        </p>
-
-                        <div className="relative mt-2">
-                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60" aria-hidden="true">
-                                $
-                            </span>
-
-                            <input
-                                id="hourly-wage"
-                                name="hourly-wage"
-                                type="number"
-                                inputMode="decimal"
-                                min={0}
-                                step={0.5}
-                                value={Number.isFinite(hourlyWage) ? hourlyWage : ""}
-                                onChange={(e) => setHourlyWage(parseFloat(e.target.value))}
-                                aria-describedby="wage-help wage-error"
-                                aria-invalid={!wageValid}
-                                className="w-full rounded-lg bg-white/10 pl-9 pr-4 py-3 text-white placeholder:text-white/50 
-                                    border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/70"
-                            />
-
-                            {!wageValid && (
-                                <p id="wage-error" className="mt-2 text-sm text-red-300" role="alert">
-                                    Please enter a valid hourly wage (0 or higher).
-                                </p>
-                            )}
-                        </div>
-                    </div>
-
-                    <button
-                        type="button"
-                        onClick={handleReset}
-                        className="inline-flex items-center justify-center rounded-lg bg-white/10 px-5 py-2 font-semibold hover:bg-white/20 transition
-                            focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-[#0B3356]"
-                    >
-                        Reset
-                    </button>
                 </div>
-            </section>
+        </section>
+    );
+}
+
+function MetricCard({ label, value }) {
+    return (
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+            <p className="text-sm text-white/60">
+                {label}
+            </p>
+
+            <p className="mt-2 text-xl font-bold">
+                {value}
+            </p>
+        </div>
+    );
+}
+
+function SliderControl({ 
+    label, 
+    value, 
+    min, 
+    max, 
+    step, 
+    prefix = "", 
+    suffix = "", 
+    onChange,
+}) {
+    return (
+        <div>
+            <div className="flex items-center justify-between">
+                <label className="text-sm font-semibold text-white/90">
+                    {label}
+                </label>
+
+                <span className="text-cyan-300 font-semibold">
+                    {prefix}
+                    {value}
+                    {suffix}
+                </span>
+            </div>
+
+            <input
+                type="range"
+                min={min}
+                max={max}
+                step={step}
+                value={value}
+                onChange={(e) => onChange(Number(e.target.value))}
+                className="w-full mt-4 accent-cyan-400"
+            />
+
+            <div className="mt-2 flex justify-between text-xs text-white/40">
+                <span>
+                    {prefix}
+                    {min}
+                </span>
+
+                <span>
+                    {prefix}
+                    {max}
+                </span>
+            </div>
+        </div>
     );
 }
