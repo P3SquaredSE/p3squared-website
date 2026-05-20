@@ -44,7 +44,7 @@ export default function Costs() {
             <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
               Healthcare Operations
               <br className="hidden md:block" />
-               Impact Simulator
+                Impact Simulator
             </h1>
 
             <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/75 leading-relaxed">
