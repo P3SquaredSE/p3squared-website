@@ -41,13 +41,13 @@ export default function LaborCalculator({
             aria-labelledby="impact-title"
             className="w-full rounded-3xl border border-white/10 bg-[#071A2E]/80 p-6 md:p-10 shadow-2xl"
         >
-            <div className="grid gap-6 lg:grid-cols-[1.4fr_0.8fr]">
+            <div className="grid gap-5 lg:grid-cols-[1.4fr_0.8fr]">
                 <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#163b63] to-[#0A2340] p-8 md:p-10">
                     <p className="text-sm uppercase tracking-[0.25em] text-cyan-300/80">
                         Labor Calculator
                     </p>
 
-                    <h2 id="impact-title" className="mt-4 md:text-7xl font-bold tracking-tight">
+                    <h2 id="impact-title" className="mt-5 md:text-7xl font-bold tracking-tight">
                         {formatUSD(annualWaste)}
                     </h2>
 
@@ -109,17 +109,6 @@ export default function LaborCalculator({
                             and improve workforce productivity through AI-assisted coordination.
                         </p>
                     </div>
-
-                    {onCOntactClick && (
-                        <button
-                            type="button"
-                            onclick={onCOntactClick}
-                            className="mt-8 w-full rounded-2xl bg-[#27D5E6] px-6 py-4 text-lg font-bold text-[#041023] transition hover:bg-[#1EC4D4] 
-                            focus:outline-none focus:ring-2 focus:ring-white/70"
-                            >
-                                Request Operational Assessment
-                            </button>
-                    )}
                 </div>
             </div>
 

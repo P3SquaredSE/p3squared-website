@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Header from "../components/Header"; 
 import ContactModal from "../components/ContactModal";
 import LaborCalculator from "../components/LaborCalculator";
+import SupplyOverview from "../components/SupplyOverview";
 
 export default function Costs() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -43,7 +44,7 @@ export default function Costs() {
             <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
               Healthcare Operations
               <br className="hidden md:block" />
-              Impact Simulator
+               Impact Simulator
             </h1>
 
             <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-white/75 leading-relaxed">
@@ -53,6 +54,11 @@ export default function Costs() {
             </p>
           </div>
         </section>
+
+        {/* Supply Overview */}
+        <Section className="container mx-auto px-4 md:px-6 max-w=7xl">
+          <SupplyOverview />
+        </Section>
 
         {/* Labor Calculator */}
         <section className="relative container mx-auto max-w-7xl px-4 md:px-6 pb-24"
