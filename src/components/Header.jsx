@@ -6,8 +6,8 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/philosophy", label: "Philosophy" },
   {href: "/Costs", label: "Costs"}, 
-  {href: "/#team", label: "Team"},
-  {href: "/#blog", label: "Blog"}
+  {href: "/Team", label: "Team"},
+  {href: "/Blog", label: "Blog"}
 ];
 
 export default function Header({ onContactClick }) {
