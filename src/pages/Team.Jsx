@@ -19,14 +19,29 @@ export default function Team() {
   const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; 
   return (
     <div className="min-h-screen overflow-hidden bg-[#0B3356] text-white">
-      <Header onContactClick={openContact} />
-        
+      <Header onContactClick={openContact} /> 
+
+      <main id="main" className="relative pt-24" aria-label="Main content"> 
+
+        {/* Background glow */}
         <div className="pointer-events-none absolute inset-0 opacity-70 overflow-hidden">
           <div className="absolute -top-32 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
           
           <div className="absolute bottom-0 right-[-120px] h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
-        </div>
+        </div> 
 
+        {/*Header */}
+        <section className="relative">
+          <div className="container mx-auto px-6 py-16 md:py-24 text-center">
+
+            <h1 className="mt-1 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                Meet The Team
+            </h1>
+
+           
+          </div>
+        </section>
+      </main> 
     
 
       <ContactModal

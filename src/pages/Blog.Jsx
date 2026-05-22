@@ -29,7 +29,16 @@ export default function Blog() {
           <div className="absolute bottom-0 right-[-120px] h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
         </div>
        
-       
+        <section className="relative">
+          <div className="container mx-auto px-6 py-16 md:py-24 text-center">
+
+            <h1 className="mt-1 text-4xl md:text-6xl font-bold tracking-tight leading-tight">
+                The P3 Blog
+            </h1>
+
+           
+          </div>
+        </section>
 
       </main>
 
