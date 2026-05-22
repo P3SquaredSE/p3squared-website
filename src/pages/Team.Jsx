@@ -20,17 +20,24 @@ export default function Team() {
   return (
     <div className="min-h-screen overflow-hidden bg-[#0B3356] text-white">
       <Header onContactClick={openContact} />
-    </div>
-   ); 
+        
+        <div className="pointer-events-none absolute inset-0 opacity-70 overflow-hidden">
+          <div className="absolute -top-32 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
+          
+          <div className="absolute bottom-0 right-[-120px] h-[400px] w-[400px] rounded-full bg-blue-500/10 blur-3xl" />
+        </div>
 
     
 
- <ContactModal
-    isOpen={isContactOpen}
-    onClose={closeContact}
-    formAction={CONTACT_FORM_ACTION}
-    preset={contactPreset}  
-    />
+      <ContactModal
+        isOpen={isContactOpen}
+        onClose={closeContact}
+        formAction={CONTACT_FORM_ACTION}
+        preset={contactPreset}  
+      /> 
+    </div>
+   ); 
+
 }
 
 
