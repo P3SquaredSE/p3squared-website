@@ -17,15 +17,19 @@ export default function Team() {
   };
 
   const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; 
+  return (
+    <div className="min-h-screen overflow-hidden bg-[#0B3356] text-white">
+      <Header onContactClick={openContact} />
+    </div>
+   ); 
 
-
-
+    
 
  <ContactModal
-        isOpen={isContactOpen}
-        onClose={closeContact}
-        formAction={CONTACT_FORM_ACTION}
-        preset={contactPreset}  
+    isOpen={isContactOpen}
+    onClose={closeContact}
+    formAction={CONTACT_FORM_ACTION}
+    preset={contactPreset}  
     />
 }
 

@@ -6,17 +6,16 @@ import ContactModal from "../components/ContactModal";
 export default function Blog() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [ contactPreset, setContactPreset ] = useState(false);
-
-    const openContact = (opts) => {
-      setContactPreset(opts?.preset ?? null);
-      setIsContactOpen(true);
+  const openContact = (opts) => {
+    setContactPreset(opts?.preset ?? null);
+    setIsContactOpen(true);
     };
-    const closeContact = () => {
-      setIsContactOpen(false);
-      setContactPreset(null);
-    };
+  //const closeContact = () => {
+    //setIsContactOpen(false);
+    //setContactPreset(null);
+    //};
 
-    const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; 
+  const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; 
 
   return (
     <div className="min-h-screen overflow-hidden bg-[#0B3356] text-white">
