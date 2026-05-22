@@ -47,7 +47,7 @@ const stages = [
   },
 ];
 
-export default function SupplyOptimizationOverview() {
+export default function SupplyOverview() {
   return (
     <section
       aria-labelledby="supply-engine-title"

@@ -1,6 +1,3 @@
-
-// WE DONT NEED THIS COMPONENT ANYMORE, BUT I DONT WANT TO DELETE IT JUST YET IN CASE WE WANT TO REUSE IT IN THE FUTURE
-
 import React from "react";
 
 export default function Capabilities() {
@@ -29,7 +26,7 @@ export default function Capabilities() {
           for the idea that your zip code should not determine your life expectancy. Our advocacy is rooted in three
           core pillars: 
         </p> 
-        <h2 id="capabilities-title" className="text-3xl md:text-4xl font-heading text-center mb-4">
+        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Protecting the Rural Economy:
         </h2> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
@@ -37,7 +34,7 @@ export default function Capabilities() {
           stabilizes, the local economy stabilizes. We fight to keep healthcare jobs where they belong—in the
           community.
         </p>
-        <h2 id="capabilities-title" className="text-3xl md:text-4xl font-heading text-center mb-4">
+        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Equitable Access to Care:
         </h2> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
@@ -45,7 +42,7 @@ export default function Capabilities() {
           advocate for operational models that balance financial viability with the human need for local inpatient
           care and maternity services.
         </p>
-        <h2 id="capabilities-title" className="text-3xl md:text-4xl font-heading text-center mb-4">
+        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Empowering Local Leadership:
         </h2> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
