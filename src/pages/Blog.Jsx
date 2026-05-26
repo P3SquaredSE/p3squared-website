@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Header from "../components/Header"; 
 import ContactModal from "../components/ContactModal";
 
-export default function Blog() {
+export default function blog() {
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [contactPreset, setContactPreset] = useState(null);
  
