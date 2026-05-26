@@ -8,14 +8,14 @@ export default function blog() {
   const [contactPreset, setContactPreset] = useState(null);
  
   const openContact = (opts) => {
-     setContactPreset(opts?.preset ?? null);
-     setIsContactOpen(true);
-   };
+    setContactPreset(opts?.preset ?? null);
+    setIsContactOpen(true);
+  };
  
   const closeContact = () => {
-     setIsContactOpen(false);
-     setContactPreset(null);
-   };
+    setIsContactOpen(false);
+    setContactPreset(null);
+  };
   const CONTACT_FORM_ACTION = "https://formspree.io/f/meeedlyp"; 
 
   return (
