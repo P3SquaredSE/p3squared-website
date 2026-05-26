@@ -26,25 +26,25 @@ export default function Capabilities() {
           for the idea that your zip code should not determine your life expectancy. Our advocacy is rooted in three
           core pillars: 
         </p> 
-        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
+        <h3 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Protecting the Rural Economy:
-        </h2> 
+        </h3> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
           A hospital is often the largest employer in a rural county. When a facility
           stabilizes, the local economy stabilizes. We fight to keep healthcare jobs where they belong—in the
           community.
         </p>
-        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
+        <h3 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Equitable Access to Care:
-        </h2> 
+        </h3> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
           We believe federal subsidies should empower hospitals, not restrict them. We
           advocate for operational models that balance financial viability with the human need for local inpatient
           care and maternity services.
         </p>
-        <h2 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
+        <h3 id="capabilities-title" className="text-2xl md:text-4xl font-heading text-center mb-4">
           Empowering Local Leadership:
-        </h2> 
+        </h3> 
         <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10"> 
           Rural healthcare leaders are being asked to do the impossible with fewer
           resources. We stand behind these CEOs and Boards, providing the data-driven "armor" they need to
