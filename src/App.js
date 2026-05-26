@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Philosophy from './pages/Philosophy';
 import Costs from './pages/Costs'; 
-import Blog from './pages/blog.jsx'; 
+import Blog from './pages/Blog.jsx'; 
 import Team from './pages/Team.jsx';
 import './App.css';
 
@@ -15,8 +15,8 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/philosophy" element={<Philosophy />} />
       <Route path="/costs" element={<Costs />} /> 
-      <Route path="/blog" element={<blog/>} /> 
-      <Route path="/Team" element={<Team/>} />
+      <Route path="/blog" element={<Blog/>} /> 
+      <Route path="/team" element={<Team/>} />
     </Routes>
   );
 }
