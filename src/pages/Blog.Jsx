@@ -52,13 +52,3 @@ export default function Blog() {
   );
 
 } 
-
-// indentation error from line 8 to line 17 making the return statement not work. 
-// You need to make sure that the return statement is properly indented inside the Blog function. For example:
-// export default function Blog() {
-//   const [isContactOpen, setIsContactOpen] = useState(false);
-//   const [ contactPreset, setContactPreset ] = useState(false);
-//   const openContact = (opts) => {
-//     setContactPreset(opts?.preset ?? null);
-//     setIsContactOpen(true);
-//   };

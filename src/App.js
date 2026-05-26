@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Philosophy from './pages/Philosophy';
 import Costs from './pages/Costs'; 
-import Blog from './pages/Blog'; 
+import Blog from './pages/Blog.jsx'; 
 import Team from './pages/Team.jsx';
 import './App.css';
 
