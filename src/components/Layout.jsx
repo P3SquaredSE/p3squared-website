@@ -38,9 +38,10 @@ export default function Layout({ children }) {
                 </div>
 
                 <div className="relative">
-                    {React.cloneElement(children, {
-                        onContactClick: openContact
-                    })}
+                    {typeof children === "function"
+                        ? children({ onContactClick: openContact })
+                        : children
+                    }
                 </div>
 
             </main>
@@ -53,7 +54,7 @@ export default function Layout({ children }) {
                 formAction={CONTACT_FORM_ACTION}
                 preset={contactPreset}
             />
-            
+
         </div>
     );
 }
