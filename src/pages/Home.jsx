@@ -4,7 +4,6 @@ import Layout from "../components/Layout";
 
 import HeroSection from "../components/HeroSection";
 import Capabilities from "../components/Capabilities";
-import HumanAICollab from "../components/HumanAICollab";
 
 
 export default function Home() {
