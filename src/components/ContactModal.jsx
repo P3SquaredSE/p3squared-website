@@ -107,7 +107,6 @@ export default function ContactModal({
     try {
       const form = e.currentTarget;
 
-      //Extra guard: investor firm name must be filled
       if (isInvestor && !firmName.trim()) {
         setStatus("error");
         setErrorMsg("Please provide your firm name for investor inquiries.");
@@ -146,7 +145,7 @@ export default function ContactModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[70] flex items-center justify-center px-4" role="presentation">
+    <div className="fixed inset-0 z-[70] flex items-start md:items-center justify-center overflow-y-auto px-4 py-6" role="presentation">
       {/* Backdrop (click closes) */}
       <button
         type="button"
@@ -162,11 +161,11 @@ export default function ContactModal({
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby="contact-modal-desc"
-        className="relative z-[71] w-full max-w-lg rounded-2xl bg-[#0B3356] text-white shadow-2xl border border-white/10"
+        className="relative z-[71] w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-[#0B3356] text-white shadow-2xl border border-white/10"
         onPointerDown={(e) => e.stopPropagation()} //clicking insice doesn't close
         //onClick={handleBackdropClick} //clicking outside the dialog closes
       >
-        <div className="flex items-start justify-between gap-4 px-6 pt-6">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pt-4 bg-[#0B3355]">
           <h2 id={titleId} className="text-xl font-semibold">
             Contact Us
           </h2>

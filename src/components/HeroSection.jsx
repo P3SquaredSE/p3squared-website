@@ -9,20 +9,20 @@ export default function HeroSection() {
     >
       {/* Mobile/Tablet version */}
       <div className="relative z-10 block lg:hidden">
-        <div className="container mx-auto px-6 py-14">
-          <div className="flex flex-col items-center gap-10">
+        <div className="container mx-auto px-6 pt-10 pb-14">
+          <div className="flex flex-col items-center gap-5">
             
             {/* Image */}
             <div className="flex justify-center">
               <img
                 src={heroTop}
                 alt="Healthcare AI"
-                className="w-full max-w-[500px] object-contain"
+                className="w-full max-w-[420px] object-contain"
               />
             </div>
 
             {/* TEXT CARD */}
-            <div className="max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-6 py-7">
+            <div className="w-full max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-5 py-5">
               <p className="text-xs tracking-[0.25em] text-white/70 font-semibold">
                 WELCOME TO
               </p>
