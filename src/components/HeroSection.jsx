@@ -17,7 +17,7 @@ export default function HeroSection() {
               <img
                 src={heroTop}
                 alt="Healthcare AI"
-                className="w-full max-w-[420px] object-contain"
+                className="w-full max-w-[420px] object-contain rounded-xl"
               />
             </div>
 
