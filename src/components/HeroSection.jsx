@@ -22,13 +22,13 @@ export default function HeroSection() {
             </div>
 
             {/* TEXT CARD */}
-            <div className="w-full max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-5 py-5">
+            <div className="w-full max-w-xl rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm shadow-2xl px-6 py-6">
               <p className="text-xs tracking-[0.25em] text-white/70 font-semibold">
                 WELCOME TO
               </p>
 
-              <h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight">
-                Transforming Rural Healthcare 
+              <h1 className="mt-4 text-[2rem] sm:text-4xl font-semibold leading-[1.25] tracking-tight">
+                Transforming Rural Healthcare
                 <br className="hidden sm:block" />
                 with AI + Human Oversight
               </h1>
