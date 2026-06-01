@@ -45,7 +45,7 @@ export default function Costs() {
             aria-label="Calculator section"
           >
             <LaborCalculator 
-            onContactClick={openContact}
+            onContactClick={onContactClick}
             />
           </section>
 
