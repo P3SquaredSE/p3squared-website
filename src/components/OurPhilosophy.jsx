@@ -210,7 +210,7 @@ return (
             {/* Header */}
             <div className="text-center">
                 <div>
-                    <p className="text-white/80 text-sm tracking-wide uppercase">
+                    <p className="text-sm uppercase tracking-[0.3em] text-cyan-300/80">
                         Our Philosophy 
                     </p>
                     <h2 
