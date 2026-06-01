@@ -27,7 +27,7 @@ export default function HeroSection() {
                 WELCOME TO
               </p>
 
-              <h1 className="mt-4 text-[2rem] sm:text-4xl font-bold leading-[1.25] tracking-tight">
+              <h1 className="mt-4 text-[2.4rem] sm:text-3xl font-bold leading-[1.25] tracking-tight">
                 Transforming Rural Healthcare
                 <span className="hidden sm:block" />
                 with AI + Human Oversight
@@ -63,9 +63,9 @@ export default function HeroSection() {
                 WELCOME TO
               </p>
 
-              <h1 className="mt-4 text-[2rem] sm:text-4xl font-bold leading-[1.25] tracking-tight">
+              <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
                 Transforming Rural Healthcare
-                <span className="hidden sm:block"ss />
+                <br />
                 with AI + Human Oversight
               </h1>
             </div>
