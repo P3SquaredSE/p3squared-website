@@ -27,9 +27,9 @@ export default function HeroSection() {
                 WELCOME TO
               </p>
 
-              <h1 className="mt-4 text-[2rem] sm:text-4xl font-semibold leading-[1.25] tracking-tight">
+              <h1 className="mt-4 text-[2rem] sm:text-4xl font-bold leading-[1.25] tracking-tight">
                 Transforming Rural Healthcare
-                <br className="hidden sm:block" />
+                <span className="hidden sm:block" />
                 with AI + Human Oversight
               </h1>
             </div>
