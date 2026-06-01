@@ -28,7 +28,7 @@ export default function HeroSection() {
               </p>
 
               <h1 className="mt-3 text-3xl sm:text-4xl font-bold leading-tight">
-                Transforming Rural Healthcare
+                Transforming Rural Healthcare 
                 <br className="hidden sm:block" />
                 with AI + Human Oversight
               </h1>

@@ -35,13 +35,13 @@ export default function Header({ onContactClick }) {
         Skip to main content
       </a>
 
-      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+      <div className="container mx-auto rounded flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img
             src={logo}
             alt="P3SquaredSE Logo"
-            className="h-14 w-auto"
+            className="h-14 w-auto rounded-xl"
             loading="eager"
             decoding="async"
           />
