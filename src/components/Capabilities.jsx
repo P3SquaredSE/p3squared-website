@@ -53,23 +53,54 @@ export default function Capabilities() {
         </div>
 
         {/* Pillars section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-24">
 
-          {pillars.map((pillar) => (
-            <article 
-              key={pillar.title}
-              className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-sm p-6 shadow-xl">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-heading mb-4">
+              Our Three Pillars
+            </h2>
 
-              <h3 className="text-xl font-semibold mb-4 leading-snug">
-                {pillar.title}
-              </h3>
+            <p className="text-white/70 leading-relaxed">
+              Every recommendation we make is guided by three commitments
+              designed to strengthen rural healthcare and protect the communities
+              that depend on it.
+            </p>
+          </div>
 
-              <p className="text-white/80 leading relaxed">
-                {pillar.description}
-              </p>
+          <div className="space-y-8">
 
-            </article>
-          ))}
+            {pillars.map((pillar, index) => (
+
+              <article
+                key={pillar.title}
+                className="group rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm
+                p-8 md:p-10 transition-all duration-300 ease-out hover:border-cyan-400/30 hover:bg-white/10"
+                >
+
+                  <div className="flex flex-col md:flex-row md:items-start md:gap-10">
+
+                    {/* Pillar number */}
+                    <div className="flex-shrink-0 mb-6 md:mb-0">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-cyan-400/10 
+                      border border-cyan-400/30 text-cyan-300 text-xl font-bold">
+
+                        {index + 1}
+                      </div>
+                    </div>
+
+                    {/* Pillar content */}
+                    <div className="flex-1">
+                      <h3 className="text-2xl md:text-3xl font-semibold mb-4">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-white/80 leading-relaxed max-w-4xl">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  </div>
+                </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
