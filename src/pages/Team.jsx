@@ -102,7 +102,7 @@ export default function Team() {
         {/* Information */}
         <div className="flex-1">
             <h2 className="text-4xl font-bold text-white">
-                Stephen Bandhi
+                Stephen Bandi
             </h2>
 
             <p className="mt-4 text-white/80">
